@@ -288,7 +288,7 @@
       <ul id="nav-menu" class="nav-links">
         <li><a href="#">Home</a></li>
         <li><a href="#Publications">Publications</a></li>
-        <li><a href="#Research">Research</a></li>
+        <li><a href="#Internship">Internship</a></li>
         <li><a href="#Education">Education</a></li>
         <li><a href="#Honors">Honors</a></li>
         <li><a href="#Service">Service</a></li>
@@ -382,7 +382,7 @@
     <p class="pub-note">* indicates equal contribution</p>
     <ul class="pub-list" id="pub-list"></ul>
 
-    <h2 id="Research">Research Experience</h2>
+    <h2 id="Internship">Internship Experience</h2>
     <ul class="timeline">
       <li><span class="tl-date">2026.05 – 2026.08</span><div class="tl-body"><b>Zoom</b><div class="tl-sub">GenAI Research Intern, Bellevue, WA.</div><div class="tl-sub">Owned the design and implementation of Zoom's next-generation agentic personalized meeting summarization end-to-end and deployed it to production; ablated harness components on SWE-bench and Terminal-Bench to diagnose coding-agent failures.</div></div></li>
     </ul>
@@ -476,9 +476,22 @@
   url={https://arxiv.org/abs/2609.20804}
 }` },
       { key: 'areaslab', sel: true,
-        t: 'AREAsLab: An Interactive Environment for AI-driven Requirement Elicitation for AI Systems',
+        t: 'AREAs-Lab: An Interactive Environment for AI-driven Requirement Elicitation for AI Systems',
         a: ['Pengshan Cai*', '<b>Zihao Zhang*</b>', 'Ting Jin', 'Chenyang Zhu', 'Kushal Chawla', 'Sangwoo Cho', 'Scott Novotney', 'Yebowen Hu', 'Fei Liu', 'Shi-Xiong Zhang', 'Sambit Sahu'],
-        v: 'Preprint 2026' },
+        v: 'EMNLP 2026 Findings',
+        pdf: 'https://arxiv.org/abs/2608.28979',
+        links: [
+          { t: 'Code', u: 'https://github.com/cpengshan/AREAs-Lab' },
+          { t: 'HuggingFace', u: 'https://huggingface.co/datasets/ZihaoZhang/AREAs-Lab' },
+        ],
+        abs: `Building effective AI systems increasingly depends on writing high-quality task requirements, yet users often struggle to articulate the constraints, preferences, and edge cases that determine success. This problem is especially acute in AI development, where behavior is shaped not only by human expectations but also by data characteristics. We present AREAs-Lab, an interactive environment for AI-driven Requirement Elicitation for AI systems. In AREAs-Lab, an assistant iteratively refines an initially incomplete requirement by analyzing the underlying dataset and asking targeted clarification questions to uncover the user's latent intent. To study this setting systematically, we construct a synthetic benchmark grounded in 16 public datasets spanning diverse domains and task types. Each benchmark instance includes a user profile, a complete reference requirement, and an intentionally underspecified version that serves as the assistant's starting point. We further introduce an automated evaluation pipeline based on an AI-simulated user that reveals hidden information only when appropriately prompted, enabling scalable and reproducible assessment of interactive elicitation quality. AREAs-Lab provides a controlled testbed for studying how AI assistants can transform vague user goals into actionable requirements for AI systems.`,
+        bib: `@inproceedings{cai2026areaslab,
+  title={AREAs-Lab: An Interactive Environment for AI-driven Requirement Elicitation for AI Systems},
+  author={Cai, Pengshan and Zhang, Zihao and Jin, Ting and Zhu, Chenyang and Chawla, Kushal and Cho, Sangwoo and Novotney, Scott and Hu, Yebowen and Liu, Fei and Zhang, Shi-Xiong and Sahu, Sambit},
+  booktitle={Findings of the Association for Computational Linguistics: EMNLP 2026},
+  year={2026},
+  url={https://arxiv.org/abs/2608.28979}
+}` },
       { key: 'costaware', sel: true,
         t: 'Cost-Awareness in Tree-Search LLM Planning: A Systematic Study',
         a: ['<b>Zihao Zhang</b>', 'Hui Wei', 'Kenan Jiang', 'Shijia Pan', 'Kai Shu', 'Fei Liu'],

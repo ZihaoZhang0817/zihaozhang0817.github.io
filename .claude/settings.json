@@ -21,7 +21,10 @@
       "Bash('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --headless=new --disable-gpu --virtual-time-budget=4000 --window-size=390,1200 --dump-dom file:///private/tmp/claude-501/-Users-zihaozhang-HomePage-ZihaoZhang-github-io/30ad6332-5769-4954-99f7-d7424625fc81/scratchpad/diag/index.html)",
       "Bash(python3 -I -c \"import sys,re,html; s=sys.stdin.read\\(\\); m=re.search\\(r'<div id=\\\\\"overflow-report\\\\\">\\(.*?\\)</div>',s,re.S\\); print\\(html.unescape\\(m.group\\(1\\)\\) if m else 'no report'\\)\")",
       "Bash(python3 -I - /private/tmp/claude-501/-Users-zihaozhang-HomePage-ZihaoZhang-github-io/30ad6332-5769-4954-99f7-d7424625fc81/scratchpad/diag/index.html)",
-      "Bash(python3 -I -c \"import sys,re,html; s=sys.stdin.read\\(\\); m=re.search\\(r'<div id=\\\\\"overflow-report\\\\\">\\(.*?\\)</div>',s,re.S\\); print\\('\\\\n'.join\\(html.unescape\\(m.group\\(1\\)\\).split\\(' || '\\)\\) if m else 'no report'\\)\")"
+      "Bash(python3 -I -c \"import sys,re,html; s=sys.stdin.read\\(\\); m=re.search\\(r'<div id=\\\\\"overflow-report\\\\\">\\(.*?\\)</div>',s,re.S\\); print\\('\\\\n'.join\\(html.unescape\\(m.group\\(1\\)\\).split\\(' || '\\)\\) if m else 'no report'\\)\")",
+      "Bash('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --headless=new --disable-gpu --virtual-time-budget=3000 --dump-dom file:///Users/zihaozhang/HomePage/ZihaoZhang.github.io/index.html)",
+      "Bash(python3 -I - /private/tmp/claude-501/-Users-zihaozhang-HomePage-ZihaoZhang-github-io/30ad6332-5769-4954-99f7-d7424625fc81/scratchpad/new-dom2.html)",
+      "Bash(grep -o 'id=\"areaslab-bib\"[^>]*>\\\\s*<pre>[^<]\\\\{0,80\\\\}' /private/tmp/claude-501/-Users-zihaozhang-HomePage-ZihaoZhang-github-io/30ad6332-5769-4954-99f7-d7424625fc81/scratchpad/new-dom2.html)"
     ]
   }
 }
