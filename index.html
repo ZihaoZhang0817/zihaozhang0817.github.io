@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zihao Zhang</title>
+  <meta name="description" content="Zihao Zhang – PhD Student in Computer Science at Emory University. Research on LLM agents, planning, and harness design for coding agents.">
+  <meta property="og:title" content="Zihao Zhang">
+  <meta property="og:description" content="PhD Student at Emory University">
+  <meta property="og:image" content="figures/zihao.jpg">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234a9eca'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='36' font-weight='700' fill='white' text-anchor='middle'%3EZ%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=LXGW+WenKai+TC:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #faf9f6;
+      --bg-card: #ffffff;
+      --bg-card-hover: #fefefe;
+      --border: rgba(0, 0, 0, 0.07);
+      --border-hover: rgba(74, 158, 202, 0.3);
+      --text: #1a1a2e;
+      --text-secondary: #4a4a5e;
+      --text-muted: #8b8b9e;
+      --accent: #4a9eca;
+      --accent-hover: #2d7ba8;
+      --font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+      --radius: 14px;
+      --radius-sm: 8px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.03);
+      --shadow: 0 4px 20px rgba(0,0,0,0.05);
+      --shadow-hover: 0 8px 30px rgba(0,0,0,0.08);
+      --max-w: 880px;
+      --nav-h: 56px;
+    }
+
+    [data-theme="dark"] {
+      --bg: #0f0f17;
+      --bg-card: #18182a;
+      --bg-card-hover: #1e1e34;
+      --border: rgba(255, 255, 255, 0.06);
+      --border-hover: rgba(99, 102, 241, 0.4);
+      --text: #e2e8f0;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      --accent: #818cf8;
+      --accent-hover: #a5b4fc;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.2);
+      --shadow: 0 4px 20px rgba(0,0,0,0.3);
+      --shadow-hover: 0 8px 30px rgba(0,0,0,0.4);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 15.5px;
+      transition: background 0.4s ease, color 0.3s ease;
+    }
+
+    a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: var(--accent-hover); }
+
+    /* ===== Nav ===== */
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      height: var(--nav-h);
+      background: rgba(250, 249, 246, 0.85);
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.3s;
+    }
+    [data-theme="dark"] .nav { background: rgba(15, 15, 23, 0.8); }
+    .nav-inner {
+      max-width: var(--max-w); margin: 0 auto; padding: 0 24px;
+      height: 100%; display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: var(--font-serif); font-weight: 600; font-size: 18px;
+      color: var(--text); letter-spacing: -0.02em;
+    }
+    .nav-logo:hover { color: var(--accent); }
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-links a {
+      font-size: 13.5px; font-weight: 500; color: var(--text-muted);
+      letter-spacing: 0.01em; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    #theme-toggle {
+      background: none; border: 1px solid var(--border);
+      border-radius: 50%; width: 34px; height: 34px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-muted); font-size: 16px; transition: all 0.2s;
+    }
+    #theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ===== Hero ===== */
+    .hero {
+      max-width: var(--max-w); margin: 0 auto;
+      padding: 72px 24px 56px;
+    }
+    .hero-inner { display: flex; align-items: center; gap: 56px; }
+    .hero-text { flex: 1; }
+    .hero-text h1 {
+      font-family: var(--font-serif);
+      font-size: 46px; font-weight: 700; line-height: 1.15;
+      color: var(--text); letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+    .cn-name {
+      font-family: 'LXGW WenKai TC', serif;
+      font-size: 0.6em; font-weight: 400;
+      color: var(--text-muted); letter-spacing: 0.05em;
+    }
+    .hero-text .tagline {
+      font-family: var(--font-mono); font-size: 13.5px;
+      color: var(--text-muted); margin-bottom: 22px; letter-spacing: -0.01em;
+    }
+    .hero-text .bio {
+      color: var(--text-secondary); font-size: 15px; line-height: 1.8; margin-bottom: 28px;
+    }
+    .hero-text .bio a {
+      color: var(--accent);
+      font-weight: 500;
+      text-decoration: underline;
+      text-decoration-color: rgba(74, 158, 202, 0.3);
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1.5px;
+      transition: text-decoration-color 0.2s, color 0.2s;
+    }
+    .hero-text .bio a:hover {
+      color: var(--accent);
+      text-decoration-color: var(--accent);
+    }
+    .social-links { display: flex; flex-wrap: wrap; gap: 8px; }
+    .social-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 7px 14px;
+      border: 1px solid var(--border); border-radius: 100px;
+      font-family: var(--font-mono); font-size: 12.5px; font-weight: 500;
+      color: var(--text-muted); transition: all 0.25s;
+    }
+    .social-link svg { width: 14px; height: 14px; fill: currentColor; flex-shrink: 0; }
+    .social-link:hover {
+      color: var(--accent); border-color: var(--accent);
+      background: rgba(74, 158, 202, 0.04); transform: translateY(-1px);
+    }
+    [data-theme="dark"] .social-link:hover { background: rgba(129, 140, 248, 0.08); }
+
+    .hero-photo {
+      flex-shrink: 0; width: 240px; height: 240px;
+      border-radius: var(--radius); overflow: hidden;
+      border: 3px solid var(--border);
+      box-shadow: var(--shadow);
+      transition: border-color 0.3s, box-shadow 0.3s;
+      position: relative;
+    }
+    .hero-photo:hover { border-color: rgba(74, 158, 202, 0.25); box-shadow: var(--shadow-hover); }
+    .hero-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    /* Shown only if figures/zihao.jpg is missing */
+    .photo-fallback {
+      display: none; width: 100%; height: 100%;
+      align-items: center; justify-content: center;
+      font-family: var(--font-serif); font-size: 72px; font-weight: 700;
+      color: var(--accent); background: var(--bg-card);
+      letter-spacing: -0.04em;
+    }
+    .hero-photo.no-photo img { display: none; }
+    .hero-photo.no-photo .photo-fallback { display: flex; }
+
+    /* ===== Sections ===== */
+    .section {
+      max-width: var(--max-w); margin: 0 auto; padding: 48px 24px;
+      scroll-margin-top: calc(var(--nav-h) + 16px);
+    }
+    .section-title {
+      font-family: var(--font-serif); font-size: 26px; font-weight: 600;
+      margin-bottom: 32px; display: flex; align-items: center; gap: 10px;
+      letter-spacing: -0.01em;
+    }
+    .section-title .hash {
+      font-family: var(--font-mono); color: var(--text-muted);
+      font-weight: 400; font-size: 18px; opacity: 0.5;
+    }
+    .section-sub {
+      font-family: var(--font-mono); font-size: 12px; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted);
+      margin: 28px 0 14px;
+    }
+    .section-sub:first-child { margin-top: 0; }
+    .divider { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+    .divider hr { border: none; height: 1px; background: var(--border); }
+
+    /* ===== News ===== */
+    .news-list {
+      display: flex; flex-direction: column;
+      max-height: 320px; overflow-y: auto;
+      border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 6px 0;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border) transparent;
+    }
+    .news-list::-webkit-scrollbar { width: 5px; }
+    .news-list::-webkit-scrollbar-track { background: transparent; }
+    .news-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+    .news-list::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+    .news-fade {
+      position: relative;
+    }
+    .news-fade::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+      height: 48px; pointer-events: none; border-radius: 0 0 var(--radius) var(--radius);
+      background: linear-gradient(to bottom, transparent, var(--bg));
+    }
+    .news-item {
+      display: flex; align-items: baseline; gap: 20px;
+      padding: 10px 14px; border-radius: var(--radius-sm); transition: background 0.2s;
+    }
+    .news-item:hover { background: rgba(0,0,0,0.015); }
+    [data-theme="dark"] .news-item:hover { background: rgba(255,255,255,0.02); }
+    .news-date {
+      font-family: var(--font-mono); font-size: 12.5px; color: var(--text-muted);
+      white-space: nowrap; min-width: 64px;
+    }
+    .news-text { color: var(--text-secondary); font-size: 14.5px; line-height: 1.65; }
+    .news-text a {
+      text-decoration: underline; text-decoration-color: rgba(74,158,202,0.25);
+      text-underline-offset: 2px; text-decoration-thickness: 1px;
+      color: var(--accent);
+    }
+    .news-text a:hover { color: var(--accent); text-decoration-color: var(--accent); }
+
+    /* ===== Publication Cards ===== */
+    .pub-list { display: flex; flex-direction: column; gap: 14px; }
+    .pub-card {
+      display: flex; gap: 22px; padding: 22px;
+      border-radius: var(--radius); border: 1px solid var(--border);
+      background: var(--bg-card); transition: all 0.3s ease;
+    }
+    .pub-card:hover {
+      border-color: var(--border-hover); background: var(--bg-card-hover);
+      transform: translateY(-2px); box-shadow: var(--shadow-hover);
+    }
+    .pub-image {
+      width: 170px; min-width: 170px; height: 110px;
+      border-radius: var(--radius-sm); overflow: hidden;
+      background: var(--bg); display: flex; align-items: center; justify-content: center;
+    }
+    .pub-image img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .pub-card:hover .pub-image img { transform: scale(1.04); }
+    .pub-info { flex: 1; display: flex; flex-direction: column; gap: 6px; }
+    .pub-title {
+      font-weight: 600; font-size: 15px; line-height: 1.5;
+      color: var(--text); transition: color 0.2s;
+    }
+    a.pub-title:hover { color: var(--accent); }
+    .pub-authors { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+    .pub-authors strong { color: var(--text); font-weight: 600; }
+    .pub-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: auto; }
+    .pub-link {
+      font-family: var(--font-mono); font-size: 11.5px; color: var(--text-muted);
+      padding: 2px 8px; border: 1px solid var(--border); border-radius: 100px;
+      transition: all 0.2s;
+    }
+    .pub-link:hover { color: var(--accent); border-color: var(--accent); }
+    .pub-note {
+      margin-top: 16px; font-family: var(--font-mono); font-size: 12px; color: var(--text-muted);
+    }
+    .venue-badge {
+      display: inline-block; padding: 2px 10px; border-radius: 100px;
+      font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.02em;
+    }
+    .venue-acl      { background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; }
+    .venue-neurips  { background: #eff6ff; color: #2563eb; border: 1px solid #bfdbfe; }
+    .venue-coling   { background: #f0fdfa; color: #0d9488; border: 1px solid #99f6e4; }
+    .venue-preprint { background: #f8fafc; color: #64748b; border: 1px solid #e2e8f0; }
+    .venue-award    { background: #fffbeb; color: #b45309; border: 1px solid #fde68a; }
+
+    [data-theme="dark"] .venue-acl      { background: rgba(220,38,38,0.1); color: #fca5a5; border-color: rgba(220,38,38,0.25); }
+    [data-theme="dark"] .venue-neurips  { background: rgba(37,99,235,0.1); color: #93c5fd; border-color: rgba(37,99,235,0.25); }
+    [data-theme="dark"] .venue-coling   { background: rgba(13,148,136,0.1); color: #5eead4; border-color: rgba(13,148,136,0.25); }
+    [data-theme="dark"] .venue-preprint { background: rgba(100,116,139,0.1); color: #94a3b8; border-color: rgba(100,116,139,0.2); }
+    [data-theme="dark"] .venue-award    { background: rgba(180,83,9,0.1); color: #fcd34d; border-color: rgba(180,83,9,0.25); }
+
+    /* ===== Experience / Education ===== */
+    .exp-list { display: flex; flex-direction: column; gap: 12px; }
+    .exp-item {
+      display: grid; grid-template-columns: 150px 1fr; gap: 18px;
+      padding: 18px 22px;
+      border-radius: var(--radius); border: 1px solid var(--border);
+      background: var(--bg-card); transition: all 0.3s ease;
+    }
+    .exp-item:hover {
+      border-color: var(--border-hover); background: var(--bg-card-hover);
+      transform: translateY(-2px); box-shadow: var(--shadow-hover);
+    }
+    .exp-when {
+      font-family: var(--font-mono); font-size: 12.5px; color: var(--text-muted);
+      line-height: 1.6; padding-top: 2px;
+    }
+    .exp-when small { display: block; font-size: 11.5px; opacity: 0.8; }
+    .exp-role { font-weight: 600; font-size: 15px; color: var(--text); line-height: 1.5; }
+    .exp-org { font-size: 13.5px; color: var(--text-secondary); margin-top: 2px; }
+    .exp-org a { color: var(--text-secondary); text-decoration: underline; text-decoration-color: var(--border); text-underline-offset: 3px; }
+    .exp-org a:hover { color: var(--accent); text-decoration-color: var(--accent); }
+    .exp-desc { margin: 8px 0 0 18px; color: var(--text-secondary); font-size: 13.5px; line-height: 1.65; }
+    .exp-desc li { margin-bottom: 3px; }
+    .exp-desc li::marker { color: var(--text-muted); }
+
+    /* ===== Footer ===== */
+    footer {
+      max-width: var(--max-w); margin: 0 auto;
+      padding: 40px 24px 80px; text-align: center;
+    }
+    footer p { font-size: 13px; color: var(--text-muted); }
+    footer a { color: var(--text-muted); }
+    footer a:hover { color: var(--accent); }
+
+    /* ===== Pixel mascot ===== */
+    #kirby-wrap {
+      position: fixed; bottom: 24px; right: 28px; z-index: 90;
+      cursor: pointer; user-select: none; -webkit-user-select: none;
+    }
+    #kirby-inner {
+      animation: umaru-float 2.8s ease-in-out infinite;
+      display: flex; flex-direction: column; align-items: center;
+    }
+    #kirby-bubble {
+      background: var(--bg-card); color: var(--text-secondary);
+      font-family: var(--font-mono); font-size: 11px;
+      padding: 4px 10px; border-radius: 8px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 6px;
+      opacity: 0; transform: translateY(4px);
+      transition: opacity 0.3s, transform 0.3s;
+      pointer-events: none; white-space: nowrap;
+    }
+    #kirby-bubble.show { opacity: 1; transform: translateY(0); }
+    #kirby-canvas {
+      image-rendering: pixelated;
+      image-rendering: crisp-edges;
+    }
+    #kirby-shadow {
+      width: 60px; height: 8px; margin-top: 3px;
+      background: radial-gradient(ellipse, rgba(0,0,0,0.1) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: umaru-shadow 2.8s ease-in-out infinite;
+    }
+    @keyframes umaru-float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+    @keyframes umaru-shadow {
+      0%, 100% { transform: scaleX(1); opacity: 1; }
+      50% { transform: scaleX(0.8); opacity: 0.6; }
+    }
+
+    /* ===== Scroll Animations ===== */
+    .anim {
+      opacity: 0; transform: translateY(18px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .anim.visible { opacity: 1; transform: translateY(0); }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 768px) {
+      .hero { padding: 44px 20px 36px; }
+      .hero-inner { flex-direction: column-reverse; gap: 32px; text-align: center; }
+      .hero-text h1 { font-size: 34px; }
+      .cn-name { display: block; margin-top: 4px; }
+      .hero-photo { width: 190px; height: 190px; }
+      .social-links { justify-content: center; }
+      .section { padding: 32px 20px; }
+      .section-title { font-size: 22px; margin-bottom: 24px; }
+      .pub-card { flex-direction: column; gap: 14px; padding: 16px; }
+      .pub-image { width: 100%; min-width: unset; height: 150px; }
+      .exp-item { grid-template-columns: 1fr; gap: 6px; padding: 16px; }
+      .exp-when small { display: inline; }
+      .exp-when small::before { content: ' · '; }
+      .news-item { flex-direction: column; gap: 2px; padding: 8px 10px; }
+      .news-date { min-width: unset; }
+      .nav-links { gap: 14px; }
+      .nav-links a { font-size: 13px; }
+      #kirby-wrap { bottom: 16px; right: 16px; }
+    }
+    @media (max-width: 480px) {
+      .hero-text h1 { font-size: 28px; }
+      .hero-photo { width: 160px; height: 160px; }
+      .social-link { padding: 6px 11px; font-size: 11.5px; }
+      .nav-links a:not(:last-of-type) { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .anim { opacity: 1; transform: none; transition: none; }
+      #kirby-inner { animation: none; }
+      #kirby-shadow { animation: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">Zihao Zhang</a>
+      <div class="nav-links">
+        <a href="#news">News</a>
+        <a href="#research">Research</a>
+        <a href="#experience">Experience</a>
+        <a href="#awards">Awards</a>
+        <button id="theme-toggle" aria-label="Toggle theme">☀️</button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-text">
+          <!-- To show your Chinese name, uncomment and fill in the span below. -->
+          <h1 class="name-heading">Zihao Zhang <!-- <span class="cn-name">中文名</span> --></h1>
+          <p class="tagline">// PhD Student · Emory University</p>
+          <p class="bio">
+            I am a PhD student in Computer Science at Emory University, co-advised by Prof. <a href="https://www.cs.emory.edu/~lxiong/">Li Xiong</a> and Prof. <a href="https://www.cs.emory.edu/~fliu40/">Fei Liu</a>.
+            Before Emory, I received my M.S. in Computer Science from UMass Amherst, advised by Prof. <a href="https://cics.umass.edu/about/directory/hong-yu">Hong Yu</a>,
+            and my B.S. in Computer Science (Honors Program) from Penn State, with minors in Mathematics, Statistics, and Cybersecurity.
+            In summer 2026, I was a GenAI Research Intern at Zoom, where I built Zoom's next-generation agentic personalized meeting summarization and studied harness design for coding agents.
+            <br><br>
+            My research centers on LLM agents: how they plan under cost constraints, how harness design shapes the behavior of coding agents, and how interactive AI systems can elicit what people actually need.
+            Earlier, I worked on clinical NLP for patient education and public-health surveillance.
+          </p>
+          <div class="social-links">
+            <!-- Add your Google Scholar profile URL and uncomment:
+            <a class="social-link" href="https://scholar.google.com/citations?user=YOUR_ID">
+              <svg viewBox="0 0 24 24"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg>
+              Scholar
+            </a>
+            -->
+            <a class="social-link" href="https://github.com/ZihaoZhang">
+              <svg viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+              GitHub
+            </a>
+            <!-- Add your LinkedIn URL and uncomment:
+            <a class="social-link" href="https://www.linkedin.com/in/YOUR_HANDLE/">
+              <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.125 2.062 2.062 0 0 1 0 4.125zM7.119 20.452H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              LinkedIn
+            </a>
+            -->
+            <a class="social-link" href="CV_Zihao_Zhang.pdf" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zm7 1.5L18.5 9H13V3.5zM8 12h8v1.5H8V12zm0 3.5h8V17H8v-1.5zM8 19h5v1.5H8V19z"/></svg>
+              CV
+            </a>
+            <a class="social-link" href="mailto:zihao.zhang@emory.edu">
+              <svg viewBox="0 0 24 24"><path d="M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.928 5.493a3 3 0 0 1-3.144 0L1.5 8.67z"/><path d="M22.5 6.908V6.75a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3v.158l9.714 5.978a1.5 1.5 0 0 0 1.572 0L22.5 6.908z"/></svg>
+              Email
+            </a>
+          </div>
+        </div>
+        <div class="hero-photo">
+          <!-- Put your photo at figures/zihao.jpg (square crop works best). -->
+          <img src="figures/zihao.jpg" alt="Zihao Zhang" onerror="this.parentElement.classList.add('no-photo')">
+          <div class="photo-fallback" aria-hidden="true">ZZ</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"><hr></div>
+
+    <section id="news" class="section">
+      <h2 class="section-title"><span class="hash">//</span> News</h2>
+      <div class="news-fade">
+      <div class="news-list">
+        <div class="news-item"><span class="news-date">2026.09</span><span class="news-text">New preprint: <a href="https://arxiv.org/abs/2609.20804">An Empirical Study of Harness Design for Coding Agents</a>. We isolate planning, action space, and context management across 176 matched settings on SWE-Bench Verified and Terminal-Bench.</span></div>
+        <div class="news-item"><span class="news-date">2026.05</span><span class="news-text">Started as a GenAI Research Intern at Zoom in Bellevue, WA, working on agentic personalized meeting summarization and coding-agent harnesses.</span></div>
+        <div class="news-item"><span class="news-date">2025.07</span><span class="news-text">Presented <a href="https://arxiv.org/abs/2502.11221">PlanGenLLMs</a> as an oral at ACL 2025 in Vienna. The paper received the Student Area Chair Highlights Award (top 1% of 8,000+ submissions).</span></div>
+        <div class="news-item"><span class="news-date">2025.05</span><span class="news-text">New preprint: <a href="https://arxiv.org/abs/2505.14656">Cost-Awareness in Tree-Search LLM Planning: A Systematic Study</a>.</span></div>
+        <div class="news-item"><span class="news-date">2025.05</span><span class="news-text"><a href="https://arxiv.org/abs/2502.11221">PlanGenLLMs: A Modern Survey of LLM Planning Capabilities</a> is accepted to ACL 2025 (main conference, oral).</span></div>
+        <div class="news-item"><span class="news-date">2024.10</span><span class="news-text">New preprint: <a href="https://arxiv.org/abs/2410.01553">MedQA-CS</a>, an OSCE-style benchmark for evaluating the clinical skills of LLMs.</span></div>
+        <div class="news-item"><span class="news-date">2024.08</span><span class="news-text">Started my PhD in Computer Science at Emory University, co-advised by Prof. Li Xiong and Prof. Fei Liu.</span></div>
+        <div class="news-item"><span class="news-date">2024.05</span><span class="news-text"><a href="https://arxiv.org/abs/2402.13452">LocalTweets to LocalHealth</a> was presented at LREC-COLING 2024.</span></div>
+        <div class="news-item"><span class="news-date">2023.12</span><span class="news-text">Presented <a href="https://arxiv.org/abs/2310.19212">EHRTutor</a> at the NeurIPS 2023 Workshop on Generative AI for Education (GAIED). Also completed my M.S. at UMass Amherst.</span></div>
+      </div>
+      </div>
+    </section>
+
+    <div class="divider"><hr></div>
+
+    <section id="research" class="section">
+      <h2 class="section-title"><span class="hash">//</span> Research</h2>
+      <div id="pub-list" class="pub-list"></div>
+      <p class="pub-note">* equal contribution</p>
+    </section>
+
+    <div class="divider"><hr></div>
+
+    <section id="experience" class="section">
+      <h2 class="section-title"><span class="hash">//</span> Experience</h2>
+
+      <p class="section-sub">Industry</p>
+      <div class="exp-list">
+        <div class="exp-item anim">
+          <div class="exp-when">May 2026 – Aug 2026<small>Bellevue, WA</small></div>
+          <div>
+            <div class="exp-role">GenAI Research Intern</div>
+            <div class="exp-org">Zoom Communications, Inc.</div>
+            <ul class="exp-desc">
+              <li>Owned the design and implementation of Zoom's next-generation agentic personalized meeting summarization end-to-end, deploying it to production to serve global users.</li>
+              <li>Ablated harness components on SWE-bench and Terminal-Bench, diagnosing agent failures and behavior via trajectory- and command-level error analyses.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="exp-item anim">
+          <div class="exp-when">May 2022 – Aug 2022<small>Pittsburgh, PA</small></div>
+          <div>
+            <div class="exp-role">Software Engineer Intern, Full Stack</div>
+            <div class="exp-org">Toyz Electronics, LLC</div>
+            <ul class="exp-desc">
+              <li>Deployed a Magento e-commerce store using AWS CloudFormation-based solutions.</li>
+              <li>Configured AWS Load Balancer and S3 for faster response time and efficient data storage.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="exp-item anim">
+          <div class="exp-when">May 2020 – Aug 2020<small>Beijing, China</small></div>
+          <div>
+            <div class="exp-role">Software Engineer Intern, IT Consulting Group</div>
+            <div class="exp-org">Ernst &amp; Young China Co., Ltd</div>
+            <ul class="exp-desc">
+              <li>Developed a capital asset pricing model for a car insurance company.</li>
+              <li>Wrote and revised demand investigation and questionnaire surveys.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <p class="section-sub">Education</p>
+      <div class="exp-list">
+        <div class="exp-item anim">
+          <div class="exp-when">Aug 2024 – Present<small>Atlanta, GA</small></div>
+          <div>
+            <div class="exp-role">Ph.D. in Computer Science</div>
+            <div class="exp-org">Emory University · Advisors: <a href="https://www.cs.emory.edu/~lxiong/">Li Xiong</a>, <a href="https://www.cs.emory.edu/~fliu40/">Fei Liu</a></div>
+          </div>
+        </div>
+        <div class="exp-item anim">
+          <div class="exp-when">Sep 2021 – Dec 2023<small>Amherst, MA</small></div>
+          <div>
+            <div class="exp-role">M.S. in Computer Science</div>
+            <div class="exp-org">University of Massachusetts Amherst · Advisor: <a href="https://cics.umass.edu/about/directory/hong-yu">Hong Yu</a></div>
+          </div>
+        </div>
+        <div class="exp-item anim">
+          <div class="exp-when">Aug 2017 – May 2021<small>University Park, PA</small></div>
+          <div>
+            <div class="exp-role">B.S. in Computer Science (Honors Program)</div>
+            <div class="exp-org">The Pennsylvania State University · Minors in Mathematics, Statistics, and Cybersecurity</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"><hr></div>
+
+    <section id="awards" class="section">
+      <h2 class="section-title"><span class="hash">//</span> Awards &amp; Service</h2>
+      <div id="awards-list" class="pub-list"></div>
+
+      <p class="section-sub">Professional Service</p>
+      <div class="exp-list">
+        <div class="exp-item anim">
+          <div class="exp-when">Area Chair</div>
+          <div><div class="exp-role" style="font-weight:500">EMNLP, ACL</div></div>
+        </div>
+        <div class="exp-item anim">
+          <div class="exp-when">Reviewer</div>
+          <div><div class="exp-role" style="font-weight:500">ICLR</div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Zihao Zhang · Site design adapted from <a href="https://rulinshao.github.io/">Rulin Shao</a>.</p>
+  </footer>
+
+  <!-- Pixel mascot -->
+  <div id="kirby-wrap">
+    <div id="kirby-inner">
+      <div id="kirby-bubble">hi~</div>
+      <canvas id="kirby-canvas" width="16" height="16"></canvas>
+      <div id="kirby-shadow"></div>
+    </div>
+  </div>
+
+  <script>
+    /* ===== Theme ===== */
+    const toggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+    const saved = localStorage.getItem('theme');
+    if (saved) html.dataset.theme = saved;
+    function syncToggle() { toggle.textContent = html.dataset.theme === 'dark' ? '🌙' : '☀️'; }
+    syncToggle();
+    toggle.addEventListener('click', () => {
+      html.dataset.theme = html.dataset.theme === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('theme', html.dataset.theme);
+      syncToggle();
+    });
+
+    /* ===== Publications =====
+       Fields: t = title, u = paper URL (leave "" if none yet), a = authors (HTML),
+               v = venue label, vc = badge class, img = teaser image path (optional),
+               extra = additional badges (optional), links = extra links such as code/slides (optional) */
+    const pubs = [
+      { t:"An Empirical Study of Harness Design for Coding Agents",
+        u:"https://arxiv.org/abs/2609.20804",
+        a:"Run-ze Fan*, <strong>Zihao Zhang*</strong>, Simin Ma, Yebowen Hu, Shouju Wang, Kaiqiang Song, Fei Liu, Hamed Zamani, Xiaoyang Wang",
+        v:"arXiv 2026", vc:"venue-preprint", img:"" },
+      { t:"AREAsLab: An Interactive Environment for AI-driven Requirement Elicitation for AI Systems",
+        u:"",
+        a:"Pengshan Cai*, <strong>Zihao Zhang*</strong>, Ting Jin, Chenyang Zhu, Kushal Chawla, Sangwoo Cho, Scott Novotney, Yebowen Hu, Fei Liu, Shi-Xiong Zhang, Sambit Sahu",
+        v:"Preprint 2026", vc:"venue-preprint", img:"" },
+      { t:"Cost-Awareness in Tree-Search LLM Planning: A Systematic Study",
+        u:"https://arxiv.org/abs/2505.14656",
+        a:"<strong>Zihao Zhang</strong>, Hui Wei, Kenan Jiang, Shijia Pan, Kai Shu, Fei Liu",
+        v:"arXiv 2025", vc:"venue-preprint", img:"" },
+      { t:"PlanGenLLMs: A Modern Survey of LLM Planning Capabilities",
+        u:"https://arxiv.org/abs/2502.11221",
+        a:"Hui Wei, <strong>Zihao Zhang</strong>, Shenghua He, Tian Xia, Shijia Pan, Fei Liu",
+        v:"ACL 2025 (Oral)", vc:"venue-acl", img:"",
+        extra:[{ t:"SAC Highlights Award · Top 1%", c:"venue-award" }],
+        links:[{ t:"ACL Anthology", u:"https://aclanthology.org/2025.acl-long.958/" }] },
+      { t:"MedQA-CS: Benchmarking Large Language Models' Clinical Skills Using an AI-SCE Framework",
+        u:"https://arxiv.org/abs/2410.01553",
+        a:"Zonghai Yao, <strong>Zihao Zhang</strong>, Chaolong Tang, Xingyu Bian, Youxia Zhao, Zhichao Yang, Junda Wang, Huixue Zhou, Won Seok Jang, Feiyun Ouyang, Hong Yu",
+        v:"EACL 2026", vc:"venue-acl", img:"" },
+      { t:"LocalTweets to LocalHealth: A Mental Health Surveillance Framework Based on Twitter Data",
+        u:"https://arxiv.org/abs/2402.13452",
+        a:"Vijeta Deshpande, Minhwa Lee, Zonghai Yao, <strong>Zihao Zhang</strong>, Jason Brian Gibbons, Hong Yu",
+        v:"LREC-COLING 2024", vc:"venue-coling", img:"",
+        links:[{ t:"ACL Anthology", u:"https://aclanthology.org/2024.lrec-main.936/" }] },
+      { t:"EHRTutor: Enhancing Patient Understanding of Discharge Instructions",
+        u:"https://arxiv.org/abs/2310.19212",
+        a:"<strong>Zihao Zhang</strong>, Zonghai Yao, Huixue Zhou, Hong Yu",
+        v:"NeurIPS 2023 Workshop (GAIED)", vc:"venue-neurips", img:"" },
+    ];
+    const awards = [
+      { t:"ACL 2025 Student Area Chair Highlights Award",
+        u:"https://arxiv.org/abs/2502.11221",
+        a:"Top 1% of 8,000+ submissions · for <em>PlanGenLLMs: A Modern Survey of LLM Planning Capabilities</em>",
+        v:"ACL 2025", vc:"venue-award", img:"" },
+    ];
+    function render(list, id) {
+      const el = document.getElementById(id);
+      list.forEach(p => {
+        const d = document.createElement('div');
+        d.className = 'pub-card anim';
+        const title = p.u
+          ? `<a href="${p.u}" class="pub-title" target="_blank" rel="noopener">${p.t}</a>`
+          : `<span class="pub-title">${p.t}</span>`;
+        const badges = [`<span class="venue-badge ${p.vc}">${p.v}</span>`]
+          .concat((p.extra || []).map(b => `<span class="venue-badge ${b.c}">${b.t}</span>`))
+          .join('');
+        const links = (p.links || [])
+          .map(l => `<a class="pub-link" href="${l.u}" target="_blank" rel="noopener">${l.t}</a>`)
+          .join('');
+        d.innerHTML = `${p.img ? `<div class="pub-image"><img src="${p.img}" alt="${p.t}" loading="lazy"></div>` : ''}<div class="pub-info">${title}<p class="pub-authors">${p.a}</p><div class="pub-meta">${badges}${links}</div></div>`;
+        el.appendChild(d);
+      });
+    }
+    render(pubs, 'pub-list');
+    render(awards, 'awards-list');
+
+    /* ===== Scroll anim ===== */
+    const obs = new IntersectionObserver(es => {
+      es.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
+    document.querySelectorAll('.anim').forEach(e => obs.observe(e));
+
+    /* ===== Pixel mascot ===== */
+    (function() {
+      const C = document.getElementById('kirby-canvas');
+      const ctx = C.getContext('2d');
+      const W = 16, H = 16, SCALE = 4;
+      C.style.width = (W * SCALE) + 'px';
+      C.style.height = (H * SCALE) + 'px';
+
+      const PAL = {
+        0: null,
+        1: '#4a9eca',  // hood/body
+        2: '#2d7ba8',  // feet
+        3: '#ffdfc4',  // skin
+        4: '#2d1b0e',  // eyes
+        5: '#ffab91',  // blush
+        6: '#e57373',  // mouth
+      };
+
+      const FRAME_OPEN = [
+        0,0,0,0,1,1,1,1,1,1,1,1,0,0,0,0,
+        0,0,0,1,1,1,1,1,1,1,1,1,1,0,0,0,
+        0,1,1,0,1,1,1,1,1,1,1,1,0,1,1,0,
+        1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+        0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,
+        0,1,1,1,3,3,3,3,3,3,3,3,1,1,1,0,
+        0,1,1,3,3,4,3,3,3,3,4,3,3,1,1,0,
+        0,1,1,3,5,3,3,3,3,3,3,5,3,1,1,0,
+        0,1,1,3,3,3,3,6,6,3,3,3,3,1,1,0,
+        0,1,1,1,3,3,3,3,3,3,3,3,1,1,1,0,
+        0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,
+        0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,
+        0,0,1,1,1,1,1,1,1,1,1,1,1,1,0,0,
+        0,0,0,1,1,1,1,1,1,1,1,1,1,0,0,0,
+        0,0,0,0,0,1,1,0,0,1,1,0,0,0,0,0,
+        0,0,0,0,0,2,2,0,0,2,2,0,0,0,0,0,
+      ];
+
+      const FRAME_BLINK = FRAME_OPEN.slice();
+      const r6 = 6 * W;
+      FRAME_BLINK[r6+5] = 3; FRAME_BLINK[r6+10] = 3;
+      const r7 = 7 * W;
+      FRAME_BLINK[r7+4] = 4; FRAME_BLINK[r7+5] = 4;
+      FRAME_BLINK[r7+10] = 4; FRAME_BLINK[r7+11] = 4;
+
+      function drawFrame(data) {
+        ctx.clearRect(0, 0, W, H);
+        for (let i = 0; i < data.length; i++) {
+          if (data[i] === 0) continue;
+          ctx.fillStyle = PAL[data[i]];
+          ctx.fillRect(i % W, Math.floor(i / W), 1, 1);
+        }
+      }
+
+      let blinking = false;
+      function tick() { drawFrame(blinking ? FRAME_BLINK : FRAME_OPEN); }
+
+      function scheduleBlink() {
+        setTimeout(() => {
+          blinking = true; tick();
+          setTimeout(() => { blinking = false; tick(); }, 120);
+          setTimeout(() => {
+            blinking = true; tick();
+            setTimeout(() => { blinking = false; tick(); scheduleBlink(); }, 120);
+          }, 200);
+        }, 2500 + Math.random() * 2500);
+      }
+
+      tick();
+      scheduleBlink();
+
+      // speech bubble
+      const bubbleEl = document.getElementById('kirby-bubble');
+      const phrases = ['hi~', 'zzZ...', '♪ ♫', 'planning...', '(╹ᗜ╹)', 'agent time!', '✧'];
+      let pi = 0;
+      document.getElementById('kirby-wrap').addEventListener('click', () => {
+        pi = (pi + 1) % phrases.length;
+        bubbleEl.textContent = phrases[pi];
+        bubbleEl.classList.add('show');
+        setTimeout(() => bubbleEl.classList.remove('show'), 1800);
+      });
+    })();
+  </script>
+</body>
+</html>
