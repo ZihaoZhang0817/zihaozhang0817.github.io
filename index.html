@@ -62,6 +62,7 @@
         --link-soft: #a9c1ea;
       }
       .hero-photo img { filter: brightness(.94); }
+      .pub-badges img { opacity: .9; }
     }
 
     *, *::before, *::after { box-sizing: border-box; }
@@ -86,6 +87,10 @@
       font-size: 36px; font-weight: 300; line-height: 1.1;
       color: var(--text-strong); margin: 0 0 10px;
       text-wrap: balance;
+    }
+    .cn-name {
+      font-size: .6em; font-weight: 400; color: var(--text-muted);
+      margin-left: 6px; letter-spacing: .06em; white-space: nowrap;
     }
     h2 {
       font-size: 30px; font-weight: 300; line-height: 1.1;
@@ -224,6 +229,9 @@
     .pub-links { font-size: 15px; margin-top: 3px; }
     .pub-links a { white-space: nowrap; }
     .pub-links a:not(:last-child)::after { content: "\00b7"; color: var(--dot); margin: 0 7px; }
+    .pub-badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 7px; }
+    .pub-badges a { display: inline-flex; }
+    .pub-badges img { display: block; height: 20px; }
     .blockcontent {
       border: 1px solid var(--border); border-radius: 6px; background: var(--card-bg);
       padding: 10px 14px; margin: 8px 0 4px; font-size: 15px;
@@ -308,7 +316,7 @@
         <div class="photo-fallback" aria-hidden="true">ZZ</div>
       </div>
       <div class="hero-text">
-        <h1>Zihao Zhang</h1>
+        <h1>Zihao Zhang <span class="cn-name" lang="zh-Hans">张子昊</span></h1>
         <div class="hero-meta">
           <b>PhD Student</b><br>
           Department of Computer Science<br>
@@ -387,7 +395,7 @@
 
     <h2 id="Internship">Internship Experience</h2>
     <ul class="timeline">
-      <li><span class="tl-date">2026.05 – 2026.08</span><div class="tl-body"><b>Zoom</b><div class="tl-sub">GenAI Research Intern, Bellevue, WA, mentored by Xiaoyang&nbsp;Wang, Kaiqiang&nbsp;Song, and Yebowen&nbsp;Hu.</div>
+      <li><span class="tl-date">2026.05 – 2026.08</span><div class="tl-body"><b>Zoom Communications, Inc.</b><div class="tl-sub">GenAI Research Intern, Bellevue, WA</div><div class="tl-sub">Mentored by Xiaoyang&nbsp;Wang, Kaiqiang&nbsp;Song, and Yebowen&nbsp;Hu</div>
         <ul class="tl-list">
           <li>Independently designed and built Zoom's next-generation agentic personalized meeting summarization end-to-end, under the guidance of my mentors.</li>
           <li>Evaluate harness components on SWE-bench and Terminal-Bench, diagnosing coding-agent failures and behavior through trajectory- and command-level error analyses.</li>
@@ -467,14 +475,16 @@
 
     /* ===== Publications =====
        Fields: key = unique id, sel = show under "Selected", t = title, a = author list (HTML per author),
-               v = venue chip, hl = highlight chips (optional), pdf = paper URL (optional),
-               links = extra links (optional), abs = abstract (optional), bib = BibTeX (optional) */
+               v = venue chip, hl = highlight chips (optional),
+               arxiv = arXiv id (title link + badge), pdf = paper URL if not on arXiv (optional),
+               code = GitHub "owner/repo" (Code link + star badge), hf = Hugging Face path such as "datasets/owner/name" (badge),
+               links = extra text links (optional), abs = abstract (optional), bib = BibTeX (optional) */
     const pubs = [
       { key: 'harness', sel: true,
         t: 'An Empirical Study of Harness Design for Coding Agents',
         a: ['Run-Ze Fan*', '<b>Zihao Zhang*</b>', 'Simin Ma', 'Yebowen Hu', 'Shouju Wang', 'Kaiqiang Song', 'Fei Liu', 'Hamed Zamani', 'Xiaoyang Wang'],
         v: 'arXiv 2026',
-        pdf: 'https://arxiv.org/abs/2609.20804',
+        arxiv: '2609.20804',
         abs: `Coding harnesses shape how autonomous coding agents translate model capabilities into long-horizon software-engineering performance, yet existing work typically evaluates harnesses as monolithic systems, leaving the effectiveness of individual components unclear. To enable component-level comparisons, we study this question with a lightweight coding harness whose execution loop is fixed while three components are varied: planning, action space, and context management. Across four models evaluated on SWE-Bench Verified and Terminal-Bench 2.1, we evaluate 176 matched settings spanning five context-management strategies, four context-window budgets, and targeted ablations of planning and action space. We find that: (1) Context management becomes increasingly valuable as the context-window budget tightens, with most of its benefit coming from preventing context-overflow failures. (2) Staging rule-based elision before LLM-based summarization provides the strongest overall efficiency among the context-management strategies, whereas making elided content recoverable adds machinery that models rarely use and yields no accuracy gain. (3) Planning shifts from an accuracy scaffold for weaker models to a cost saver for stronger models, with little change in accuracy. (4) Predefined tools improve performance for models with weaker bash proficiency, whereas bash-capable models can operate effectively with a bash-only interface and achieve substantially lower cost, especially on command-line-centric tasks. Trajectory-level analysis explains these effects: context management extends execution trajectories without substantially altering agent behavior, planning changes where trajectories stop, and the action space changes the granularity at which code is written. These findings inform model- and budget-aware harness design and provide a modular framework for evaluating future harness components.`,
         bib: `@article{fan2026harness,
   title={An Empirical Study of Harness Design for Coding Agents},
@@ -487,11 +497,9 @@
         t: 'AREAs-Lab: An Interactive Environment for AI-driven Requirement Elicitation for AI Systems',
         a: ['Pengshan Cai*', '<b>Zihao Zhang*</b>', 'Ting Jin', 'Chenyang Zhu', 'Kushal Chawla', 'Sangwoo Cho', 'Scott Novotney', 'Yebowen Hu', 'Fei Liu', 'Shi-Xiong Zhang', 'Sambit Sahu'],
         v: 'EMNLP 2026 Findings',
-        pdf: 'https://arxiv.org/abs/2608.28979',
-        links: [
-          { t: 'Code', u: 'https://github.com/cpengshan/AREAs-Lab' },
-          { t: 'HuggingFace', u: 'https://huggingface.co/datasets/ZihaoZhang/AREAs-Lab' },
-        ],
+        arxiv: '2608.28979',
+        code: 'cpengshan/AREAs-Lab',
+        hf: 'datasets/ZihaoZhang/AREAs-Lab',
         abs: `Building effective AI systems increasingly depends on writing high-quality task requirements, yet users often struggle to articulate the constraints, preferences, and edge cases that determine success. This problem is especially acute in AI development, where behavior is shaped not only by human expectations but also by data characteristics. We present AREAs-Lab, an interactive environment for AI-driven Requirement Elicitation for AI systems. In AREAs-Lab, an assistant iteratively refines an initially incomplete requirement by analyzing the underlying dataset and asking targeted clarification questions to uncover the user's latent intent. To study this setting systematically, we construct a synthetic benchmark grounded in 16 public datasets spanning diverse domains and task types. Each benchmark instance includes a user profile, a complete reference requirement, and an intentionally underspecified version that serves as the assistant's starting point. We further introduce an automated evaluation pipeline based on an AI-simulated user that reveals hidden information only when appropriately prompted, enabling scalable and reproducible assessment of interactive elicitation quality. AREAs-Lab provides a controlled testbed for studying how AI assistants can transform vague user goals into actionable requirements for AI systems.`,
         bib: `@inproceedings{cai2026areaslab,
   title={AREAs-Lab: An Interactive Environment for AI-driven Requirement Elicitation for AI Systems},
@@ -500,24 +508,12 @@
   year={2026},
   url={https://arxiv.org/abs/2608.28979}
 }` },
-      { key: 'costaware', sel: true,
-        t: 'Cost-Awareness in Tree-Search LLM Planning: A Systematic Study',
-        a: ['<b>Zihao Zhang</b>', 'Hui Wei', 'Kenan Jiang', 'Shijia Pan', 'Kai Shu', 'Fei Liu'],
-        v: 'arXiv 2025',
-        pdf: 'https://arxiv.org/abs/2505.14656',
-        abs: `Planning under resource constraints is central to real-world decision making, yet most large language model (LLM) planners assume uniform action costs. We systematically analyze whether tree-search LLM planners are cost-aware and whether they efficiently generate budget-feasible plans. In contrast to black-box prompting, explicit search trees expose intermediate decisions, node evaluations, and failure modes, which allows for controlled ablations of planner behavior. We study depth-first search, breadth-first search, Monte Carlo Tree Search, and bidirectional search within a unified framework. Our experiments show that existing tree-based LLM planners often struggle to find cost-optimal plans, and that additional search computation does not reliably improve optimality. Among the methods evaluated, bidirectional search achieves the best overall efficiency and success rate. MCTS achieves the highest optimality on short-horizon tasks. Tree-search planners are especially valuable for studying LLM planning because their reasoning steps are explicit, in contrast to plain LLMs that internalize planning dynamics through post-training trajectories. Our findings suggest that improving LLM planning under resource constraints will likely require new search algorithms, rather than solely scaling inference-time compute.`,
-        bib: `@article{zhang2025costawareness,
-  title={Cost-Awareness in Tree-Search LLM Planning: A Systematic Study},
-  author={Zhang, Zihao and Wei, Hui and Jiang, Kenan and Pan, Shijia and Shu, Kai and Liu, Fei},
-  journal={arXiv preprint arXiv:2505.14656},
-  year={2025},
-  url={https://arxiv.org/abs/2505.14656}
-}` },
       { key: 'plangen', sel: true,
         t: 'PlanGenLLMs: A Modern Survey of LLM Planning Capabilities',
         a: ['Hui Wei', '<b>Zihao Zhang</b>', 'Shenghua He', 'Tian Xia', 'Shijia Pan', 'Fei Liu'],
         v: 'ACL 2025', hl: ['Oral', 'SAC Highlights Award · Top 1%'],
-        pdf: 'https://arxiv.org/abs/2502.11221',
+        arxiv: '2502.11221',
+        code: 'wll199566/Awesome-LLM-Planning-Capability',
         links: [{ t: 'ACL Anthology', u: 'https://aclanthology.org/2025.acl-long.958/' }],
         abs: `LLMs have immense potential for generating plans, transforming an initial world state into a desired goal state. A large body of research has explored the use of LLMs for various planning tasks, from web navigation to travel planning and database querying. However, many of these systems are tailored to specific problems, making it challenging to compare them or determine the best approach for new tasks. There is also a lack of clear and consistent evaluation criteria. Our survey aims to offer a comprehensive overview of current LLM planners to fill this gap. It builds on foundational work by Kartam and Wilkins (1990) and examines six key performance criteria: completeness, executability, optimality, representation, generalization, and efficiency. For each, we provide a thorough analysis of representative works and highlight their strengths and weaknesses. Our paper also identifies crucial future directions, making it a valuable resource for both practitioners and newcomers interested in leveraging LLM planning to support agentic workflows.`,
         bib: `@inproceedings{wei-etal-2025-plangenllms,
@@ -532,11 +528,24 @@
   doi = "10.18653/v1/2025.acl-long.958",
   pages = "19497--19521"
 }` },
+      { key: 'costaware', sel: false,
+        t: 'Cost-Awareness in Tree-Search LLM Planning: A Systematic Study',
+        a: ['<b>Zihao Zhang</b>', 'Hui Wei', 'Kenan Jiang', 'Shijia Pan', 'Kai Shu', 'Fei Liu'],
+        v: 'arXiv 2025',
+        arxiv: '2505.14656',
+        abs: `Planning under resource constraints is central to real-world decision making, yet most large language model (LLM) planners assume uniform action costs. We systematically analyze whether tree-search LLM planners are cost-aware and whether they efficiently generate budget-feasible plans. In contrast to black-box prompting, explicit search trees expose intermediate decisions, node evaluations, and failure modes, which allows for controlled ablations of planner behavior. We study depth-first search, breadth-first search, Monte Carlo Tree Search, and bidirectional search within a unified framework. Our experiments show that existing tree-based LLM planners often struggle to find cost-optimal plans, and that additional search computation does not reliably improve optimality. Among the methods evaluated, bidirectional search achieves the best overall efficiency and success rate. MCTS achieves the highest optimality on short-horizon tasks. Tree-search planners are especially valuable for studying LLM planning because their reasoning steps are explicit, in contrast to plain LLMs that internalize planning dynamics through post-training trajectories. Our findings suggest that improving LLM planning under resource constraints will likely require new search algorithms, rather than solely scaling inference-time compute.`,
+        bib: `@article{zhang2025costawareness,
+  title={Cost-Awareness in Tree-Search LLM Planning: A Systematic Study},
+  author={Zhang, Zihao and Wei, Hui and Jiang, Kenan and Pan, Shijia and Shu, Kai and Liu, Fei},
+  journal={arXiv preprint arXiv:2505.14656},
+  year={2025},
+  url={https://arxiv.org/abs/2505.14656}
+}` },
       { key: 'medqacs', sel: false,
         t: 'MedQA-CS: Objective Structured Clinical Examination (OSCE)-Style Benchmark for Evaluating LLM Clinical Skills',
         a: ['Zonghai Yao', '<b>Zihao Zhang</b>', 'Chaolong Tang', 'Xingyu Bian', 'Youxia Zhao', 'Zhichao Yang', 'Junda Wang', 'Huixue Zhou', 'Won Seok Jang', 'Feiyun Ouyang', 'Hong Yu'],
         v: 'EACL 2026',
-        pdf: 'https://arxiv.org/abs/2410.01553',
+        arxiv: '2410.01553',
         links: [{ t: 'ACL Anthology', u: 'https://aclanthology.org/2026.eacl-long.292/' }],
         abs: `Artificial intelligence (AI) and large language models (LLMs) in healthcare require advanced clinical skills (CS), yet current benchmarks fail to evaluate these comprehensively. We introduce MedQA-CS, an AI-SCE framework inspired by medical education's Objective Structured Clinical Examinations (OSCEs), to address this gap. MedQA-CS evaluates LLMs through two instruction-following tasks, LLM-as-medical-student and LLM-as-CS-examiner, designed to reflect real clinical scenarios. Our contributions include developing MedQA-CS, a comprehensive evaluation framework with publicly available data and expert annotations, and providing the quantitative and qualitative assessment of LLMs as reliable judges in CS evaluation. Our experiments show that MedQA-CS is a more challenging benchmark for evaluating clinical skills than traditional multiple-choice QA benchmarks (e.g., MedQA). Combined with existing benchmarks, MedQA-CS enables a more comprehensive evaluation of LLMs' clinical capabilities for both open- and closed-source LLMs.`,
         bib: `@inproceedings{yao-etal-2026-medqa,
@@ -555,7 +564,7 @@
         t: 'LocalTweets to LocalHealth: A Mental Health Surveillance Framework Based on Twitter Data',
         a: ['Vijeta Deshpande', 'Minhwa Lee', 'Zonghai Yao', '<b>Zihao Zhang</b>', 'Jason Brian Gibbons', 'Hong Yu'],
         v: 'LREC-COLING 2024',
-        pdf: 'https://arxiv.org/abs/2402.13452',
+        arxiv: '2402.13452',
         links: [{ t: 'ACL Anthology', u: 'https://aclanthology.org/2024.lrec-main.936/' }],
         abs: `Prior research on Twitter (now X) data has provided positive evidence of its utility in developing supplementary health surveillance systems. In this study, we present a new framework to surveil public health, focusing on mental health (MH) outcomes. We hypothesize that locally posted tweets are indicative of local MH outcomes and collect tweets posted from 765 neighborhoods (census block groups) in the USA. We pair these tweets from each neighborhood with the corresponding MH outcome reported by the Center for Disease Control (CDC) to create a benchmark dataset, LocalTweets. With LocalTweets, we present the first population-level evaluation task for Twitter-based MH surveillance systems. We then develop an efficient and effective method, LocalHealth, for predicting MH outcomes based on LocalTweets. When used with GPT3.5, LocalHealth achieves the highest F1-score and accuracy of 0.7429 and 79.78%, respectively, a 59% improvement in F1-score over the GPT3.5 in zero-shot setting. We also utilize LocalHealth to extrapolate CDC's estimates to proxy unreported neighborhoods, achieving an F1-score of 0.7291. Our work suggests that Twitter data can be effectively leveraged to simulate neighborhood-level MH outcomes.`,
         bib: `@inproceedings{deshpande-etal-2024-localtweets,
@@ -573,7 +582,7 @@
         t: 'EHRTutor: Enhancing Patient Understanding of Discharge Instructions',
         a: ['<b>Zihao Zhang</b>', 'Zonghai Yao', 'Huixue Zhou', 'Hong Yu'],
         v: 'NeurIPS 2023 Workshop (GAIED)',
-        pdf: 'https://arxiv.org/abs/2310.19212',
+        arxiv: '2310.19212',
         abs: `Large language models have shown success as a tutor in education in various fields. Educating patients about their clinical visits plays a pivotal role in patients' adherence to their treatment plans post-discharge. This paper presents EHRTutor, an innovative multi-component framework leveraging the Large Language Model (LLM) for patient education through conversational question-answering. EHRTutor first formulates questions pertaining to the electronic health record discharge instructions. It then educates the patient through conversation by administering each question as a test. Finally, it generates a summary at the end of the conversation. Evaluation results using LLMs and domain experts have shown a clear preference for EHRTutor over the baseline. Moreover, EHRTutor also offers a framework for generating synthetic patient education dialogues that can be used for future in-house system training.`,
         bib: `@inproceedings{zhang2023ehrtutor,
   title={EHRTutor: Enhancing Patient Understanding of Discharge Instructions},
@@ -588,27 +597,42 @@
       const list = document.getElementById('pub-list');
       const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
+      // shields.io badges, styled like the venue chips (light label, site-blue logo and value)
+      const BADGE = 'style=flat&labelColor=eef2f9&color=224b8d&logoColor=224b8d';
+      const shieldText = s => encodeURIComponent(s.replace(/-/g, '--').replace(/_/g, '__'));
+      const badge = (href, alt, src) =>
+        `<a href="${href}" target="_blank" rel="noopener"><img src="${src}" alt="${alt}" height="20" loading="lazy"></a>`;
+
       function render(selectedOnly) {
         list.innerHTML = '';
         pubs.filter(p => !selectedOnly || p.sel).forEach(p => {
           const li = document.createElement('li');
-          const title = p.pdf
-            ? `<a href="${p.pdf}" target="_blank" rel="noopener">${p.t}</a>`
+          const paper = p.arxiv ? `https://arxiv.org/abs/${p.arxiv}` : p.pdf;
+          const title = paper
+            ? `<a href="${paper}" target="_blank" rel="noopener">${p.t}</a>`
             : p.t;
           const authors = p.a.map(x => `<span class="nowrap">${x}</span>`).join(', ');
           const chips = [`<span class="venue">${p.v}</span>`]
             .concat((p.hl || []).map(h => `<span class="venue venue-hl">${h}</span>`))
             .join('');
           const links = [];
-          if (p.pdf) links.push(`<a href="${p.pdf}" target="_blank" rel="noopener">PDF</a>`);
           if (p.abs) links.push(`<a href="#" data-toggle="${p.key}-abs">Abstract</a>`);
           if (p.bib) links.push(`<a href="#" data-toggle="${p.key}-bib">Bib</a>`);
+          if (p.code) links.push(`<a href="https://github.com/${p.code}" target="_blank" rel="noopener">Code</a>`);
           (p.links || []).forEach(l => links.push(`<a href="${l.u}" target="_blank" rel="noopener">${l.t}</a>`));
+          const badges = [];
+          if (p.arxiv) badges.push(badge(paper, `arXiv ${p.arxiv}`,
+            `https://img.shields.io/badge/arXiv-${shieldText(p.arxiv)}-224b8d?${BADGE}&logo=arxiv`));
+          if (p.code) badges.push(badge(`https://github.com/${p.code}`, `GitHub stars for ${p.code}`,
+            `https://img.shields.io/github/stars/${p.code}?label=${encodeURIComponent(p.code.split('/')[1])}&${BADGE}&logo=github`));
+          if (p.hf) badges.push(badge(`https://huggingface.co/${p.hf}`, `Hugging Face: ${p.hf}`,
+            `https://img.shields.io/badge/${p.hf.startsWith('datasets/') ? 'Dataset' : 'Model'}-${shieldText(p.hf.split('/').pop())}-224b8d?${BADGE}&logo=huggingface`));
           li.innerHTML =
             `<div class="pub-title">${title}</div>` +
             `<div class="pub-authors">${authors}</div>` +
             `<div class="pub-meta">${chips}</div>` +
             (links.length ? `<div class="pub-links">${links.join('')}</div>` : '') +
+            (badges.length ? `<div class="pub-badges">${badges.join('')}</div>` : '') +
             (p.abs ? `<div id="${p.key}-abs" class="blockcontent" hidden><p>${p.abs}</p></div>` : '') +
             (p.bib ? `<div id="${p.key}-bib" class="blockcontent" hidden><pre>${esc(p.bib)}</pre></div>` : '');
           list.appendChild(li);
