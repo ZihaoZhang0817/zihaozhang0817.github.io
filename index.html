@@ -597,8 +597,7 @@
       const list = document.getElementById('pub-list');
       const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
-      // shields.io badges, styled like the venue chips (light label, site-blue logo and value)
-      const BADGE = 'style=flat&labelColor=eef2f9&color=224b8d&logoColor=224b8d';
+      // shields.io badges in each service's brand colours
       const shieldText = s => encodeURIComponent(s.replace(/-/g, '--').replace(/_/g, '__'));
       const badge = (href, alt, src) =>
         `<a href="${href}" target="_blank" rel="noopener"><img src="${src}" alt="${alt}" height="20" loading="lazy"></a>`;
@@ -622,11 +621,11 @@
           (p.links || []).forEach(l => links.push(`<a href="${l.u}" target="_blank" rel="noopener">${l.t}</a>`));
           const badges = [];
           if (p.arxiv) badges.push(badge(paper, `arXiv ${p.arxiv}`,
-            `https://img.shields.io/badge/arXiv-${shieldText(p.arxiv)}-224b8d?${BADGE}&logo=arxiv`));
+            `https://img.shields.io/badge/arXiv-${shieldText(p.arxiv)}-b31b1b?style=flat&logo=arxiv&logoColor=white`));
           if (p.code) badges.push(badge(`https://github.com/${p.code}`, `GitHub stars for ${p.code}`,
-            `https://img.shields.io/github/stars/${p.code}?label=${encodeURIComponent(p.code.split('/')[1])}&${BADGE}&logo=github`));
+            `https://img.shields.io/github/stars/${p.code}?style=flat&label=${encodeURIComponent(p.code.split('/')[1])}&logo=github&logoColor=white&labelColor=181717&color=e3b341`));
           if (p.hf) badges.push(badge(`https://huggingface.co/${p.hf}`, `Hugging Face: ${p.hf}`,
-            `https://img.shields.io/badge/${p.hf.startsWith('datasets/') ? 'Dataset' : 'Model'}-${shieldText(p.hf.split('/').pop())}-224b8d?${BADGE}&logo=huggingface`));
+            `https://img.shields.io/badge/%F0%9F%A4%97%20${p.hf.startsWith('datasets/') ? 'Dataset' : 'Model'}-${shieldText(p.hf.split('/').pop())}-ffd21e?style=flat`));
           li.innerHTML =
             `<div class="pub-title">${title}</div>` +
             `<div class="pub-authors">${authors}</div>` +
