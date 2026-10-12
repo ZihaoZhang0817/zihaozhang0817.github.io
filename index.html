@@ -119,8 +119,8 @@
       color: var(--text-muted); letter-spacing: 0.05em;
     }
     .hero-text .tagline {
-      font-family: var(--font-mono); font-size: 13.5px;
-      color: var(--text-muted); margin-bottom: 22px; letter-spacing: -0.01em;
+      font-family: var(--font-mono); font-size: 13.5px; font-weight: 500;
+      color: var(--text); margin-bottom: 22px; letter-spacing: -0.01em;
     }
     .hero-text .bio {
       color: var(--text-secondary); font-size: 15px; line-height: 1.8; margin-bottom: 28px;
@@ -339,46 +339,6 @@
     footer a { color: var(--text-muted); }
     footer a:hover { color: var(--accent); }
 
-    /* ===== Pixel mascot ===== */
-    #kirby-wrap {
-      position: fixed; bottom: 24px; right: 28px; z-index: 90;
-      cursor: pointer; user-select: none; -webkit-user-select: none;
-    }
-    #kirby-inner {
-      animation: umaru-float 2.8s ease-in-out infinite;
-      display: flex; flex-direction: column; align-items: center;
-    }
-    #kirby-bubble {
-      background: var(--bg-card); color: var(--text-secondary);
-      font-family: var(--font-mono); font-size: 11px;
-      padding: 4px 10px; border-radius: 8px;
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow-sm);
-      margin-bottom: 6px;
-      opacity: 0; transform: translateY(4px);
-      transition: opacity 0.3s, transform 0.3s;
-      pointer-events: none; white-space: nowrap;
-    }
-    #kirby-bubble.show { opacity: 1; transform: translateY(0); }
-    #kirby-canvas {
-      image-rendering: pixelated;
-      image-rendering: crisp-edges;
-    }
-    #kirby-shadow {
-      width: 60px; height: 8px; margin-top: 3px;
-      background: radial-gradient(ellipse, rgba(0,0,0,0.1) 0%, transparent 70%);
-      border-radius: 50%;
-      animation: umaru-shadow 2.8s ease-in-out infinite;
-    }
-    @keyframes umaru-float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-5px); }
-    }
-    @keyframes umaru-shadow {
-      0%, 100% { transform: scaleX(1); opacity: 1; }
-      50% { transform: scaleX(0.8); opacity: 0.6; }
-    }
-
     /* ===== Scroll Animations ===== */
     .anim {
       opacity: 0; transform: translateY(18px);
@@ -406,7 +366,6 @@
       .hero-text .bio { text-align: left; }
       .nav-links { gap: 14px; }
       .nav-links a { font-size: 13px; }
-      #kirby-wrap { bottom: 16px; right: 16px; }
     }
     @media (max-width: 480px) {
       .hero-text h1 { font-size: 28px; }
@@ -417,8 +376,6 @@
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       .anim { opacity: 1; transform: none; transition: none; }
-      #kirby-inner { animation: none; }
-      #kirby-shadow { animation: none; }
     }
   </style>
 </head>
@@ -446,8 +403,8 @@
           <p class="tagline">// PhD Student · Emory University</p>
           <div class="bio">
             <p>
-              I am a third-year PhD student in Computer Science at Emory University, co-advised by Prof. <a href="https://www.cs.emory.edu/~lxiong/">Li Xiong</a> and Prof. <a href="https://www.cs.emory.edu/~fliu40/">Fei Liu</a>.
-              In summer 2026, I was a GenAI Research Intern at Zoom, where I built Zoom's next-generation agentic personalized meeting summarization and studied harness design for coding agents.
+              I am a PhD student in the Department of Computer Science at Emory University, fortunate to be advised by Prof. <a href="https://www.cs.emory.edu/~lxiong/">Li Xiong</a>.
+              Previously, I was fortunate to be advised by Dr. <a href="https://www.cs.emory.edu/~fliu40/">Fei Liu</a>.
               Before Emory, I received my M.S. in Computer Science from UMass Amherst, advised by Prof. <a href="https://cics.umass.edu/about/directory/hong-yu">Hong Yu</a>,
               and my B.S. in Computer Science (Honors Program) from Penn State, with minors in Mathematics, Statistics, and Cybersecurity.
             </p>
@@ -457,11 +414,10 @@
             <ul class="interests">
               <li><strong>LLM Agents and Planning:</strong> how agents plan under cost constraints, tree-search planning, and evaluating the planning capabilities of LLMs.</li>
               <li><strong>Coding Agents:</strong> harness design, context management, and failure analysis for long-horizon software-engineering agents.</li>
-              <li><strong>Interactive and Personalized AI Systems:</strong> AI-driven requirement elicitation and personalized summarization that surface what people actually need.</li>
-              <li><strong>LLM for Healthcare:</strong> clinical-skill benchmarks, patient education, and public-health surveillance with clinical NLP.</li>
+              <li><strong>LLM Safety &amp; Privacy:</strong> privacy risks and safeguards for LLMs and agentic systems, and building trustworthy agents that act safely on users' behalf.</li>
             </ul>
             <p>
-              I am happy to collaborate and/or answer questions about my research. If you are interested in research collaboration or have any inquiries about my experience, please send me an <a href="mailto:zihao.zhang@emory.edu">email</a>.
+              I am happy to collaborate and/or answer questions about my research. If you are interested in research collaboration or have any inquiries about my experience, please send me an <a class="js-email" href="#">email</a>.
             </p>
           </div>
           <div class="social-links">
@@ -481,7 +437,7 @@
               <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
               X
             </a>
-            <a class="social-link" href="mailto:zihao.zhang@emory.edu" data-tooltip="zihao.zhang@emory.edu" aria-label="Email: zihao.zhang@emory.edu">
+            <a class="social-link js-email" href="#" data-tooltip="zihao.zhang(at)emory(dot)edu" aria-label="Email: zihao.zhang(at)emory(dot)edu">
               <svg viewBox="0 0 24 24"><path d="M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.928 5.493a3 3 0 0 1-3.144 0L1.5 8.67z"/><path d="M22.5 6.908V6.75a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3v.158l9.714 5.978a1.5 1.5 0 0 0 1.572 0L22.5 6.908z"/></svg>
               Email
             </a>
@@ -594,15 +550,6 @@
     <p>© 2026 Zihao Zhang · Site design adapted from <a href="https://rulinshao.github.io/">Rulin Shao</a>.</p>
   </footer>
 
-  <!-- Pixel mascot -->
-  <div id="kirby-wrap">
-    <div id="kirby-inner">
-      <div id="kirby-bubble">hi~</div>
-      <canvas id="kirby-canvas" width="16" height="16"></canvas>
-      <div id="kirby-shadow"></div>
-    </div>
-  </div>
-
   <script>
     /* ===== Theme ===== */
     const toggle = document.getElementById('theme-toggle');
@@ -681,6 +628,12 @@
     render(pubs, 'pub-list');
     render(awards, 'awards-list');
 
+    /* ===== Email: assembled at runtime so the plain address never appears in the static HTML ===== */
+    (function() {
+      const addr = ['zihao.zhang', 'emory.edu'].join('@');
+      document.querySelectorAll('.js-email').forEach(a => { a.href = 'mailto:' + addr; });
+    })();
+
     /* ===== News: show the first few, expand on demand ===== */
     (function() {
       const LIMIT = 5;
@@ -702,88 +655,6 @@
       es.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
     document.querySelectorAll('.anim').forEach(e => obs.observe(e));
-
-    /* ===== Pixel mascot ===== */
-    (function() {
-      const C = document.getElementById('kirby-canvas');
-      const ctx = C.getContext('2d');
-      const W = 16, H = 16, SCALE = 4;
-      C.style.width = (W * SCALE) + 'px';
-      C.style.height = (H * SCALE) + 'px';
-
-      const PAL = {
-        0: null,
-        1: '#4a9eca',  // hood/body
-        2: '#2d7ba8',  // feet
-        3: '#ffdfc4',  // skin
-        4: '#2d1b0e',  // eyes
-        5: '#ffab91',  // blush
-        6: '#e57373',  // mouth
-      };
-
-      const FRAME_OPEN = [
-        0,0,0,0,1,1,1,1,1,1,1,1,0,0,0,0,
-        0,0,0,1,1,1,1,1,1,1,1,1,1,0,0,0,
-        0,1,1,0,1,1,1,1,1,1,1,1,0,1,1,0,
-        1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-        0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,
-        0,1,1,1,3,3,3,3,3,3,3,3,1,1,1,0,
-        0,1,1,3,3,4,3,3,3,3,4,3,3,1,1,0,
-        0,1,1,3,5,3,3,3,3,3,3,5,3,1,1,0,
-        0,1,1,3,3,3,3,6,6,3,3,3,3,1,1,0,
-        0,1,1,1,3,3,3,3,3,3,3,3,1,1,1,0,
-        0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,
-        0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,
-        0,0,1,1,1,1,1,1,1,1,1,1,1,1,0,0,
-        0,0,0,1,1,1,1,1,1,1,1,1,1,0,0,0,
-        0,0,0,0,0,1,1,0,0,1,1,0,0,0,0,0,
-        0,0,0,0,0,2,2,0,0,2,2,0,0,0,0,0,
-      ];
-
-      const FRAME_BLINK = FRAME_OPEN.slice();
-      const r6 = 6 * W;
-      FRAME_BLINK[r6+5] = 3; FRAME_BLINK[r6+10] = 3;
-      const r7 = 7 * W;
-      FRAME_BLINK[r7+4] = 4; FRAME_BLINK[r7+5] = 4;
-      FRAME_BLINK[r7+10] = 4; FRAME_BLINK[r7+11] = 4;
-
-      function drawFrame(data) {
-        ctx.clearRect(0, 0, W, H);
-        for (let i = 0; i < data.length; i++) {
-          if (data[i] === 0) continue;
-          ctx.fillStyle = PAL[data[i]];
-          ctx.fillRect(i % W, Math.floor(i / W), 1, 1);
-        }
-      }
-
-      let blinking = false;
-      function tick() { drawFrame(blinking ? FRAME_BLINK : FRAME_OPEN); }
-
-      function scheduleBlink() {
-        setTimeout(() => {
-          blinking = true; tick();
-          setTimeout(() => { blinking = false; tick(); }, 120);
-          setTimeout(() => {
-            blinking = true; tick();
-            setTimeout(() => { blinking = false; tick(); scheduleBlink(); }, 120);
-          }, 200);
-        }, 2500 + Math.random() * 2500);
-      }
-
-      tick();
-      scheduleBlink();
-
-      // speech bubble
-      const bubbleEl = document.getElementById('kirby-bubble');
-      const phrases = ['hi~', 'zzZ...', '♪ ♫', 'planning...', '(╹ᗜ╹)', 'agent time!', '✧'];
-      let pi = 0;
-      document.getElementById('kirby-wrap').addEventListener('click', () => {
-        pi = (pi + 1) % phrases.length;
-        bubbleEl.textContent = phrases[pi];
-        bubbleEl.classList.add('show');
-        setTimeout(() => bubbleEl.classList.remove('show'), 1800);
-      });
-    })();
   </script>
 </body>
 </html>
