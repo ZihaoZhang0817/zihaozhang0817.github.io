@@ -125,6 +125,11 @@
     .hero-text .bio {
       color: var(--text-secondary); font-size: 15px; line-height: 1.8; margin-bottom: 28px;
     }
+    .hero-text .bio > * + * { margin-top: 12px; }
+    .hero-text .bio strong { color: var(--text); font-weight: 600; }
+    .hero-text .bio .interests { padding-left: 22px; }
+    .hero-text .bio .interests li { margin-bottom: 4px; }
+    .hero-text .bio .interests li::marker { color: var(--text-muted); }
     .hero-text .bio a {
       color: var(--accent);
       font-weight: 500;
@@ -216,43 +221,34 @@
     .divider hr { border: none; height: 1px; background: var(--border); }
 
     /* ===== News ===== */
-    .news-list {
-      display: flex; flex-direction: column;
-      max-height: 320px; overflow-y: auto;
-      border: 1px solid var(--border); border-radius: var(--radius);
-      padding: 6px 0;
-      scrollbar-width: thin;
-      scrollbar-color: var(--border) transparent;
-    }
-    .news-list::-webkit-scrollbar { width: 5px; }
-    .news-list::-webkit-scrollbar-track { background: transparent; }
-    .news-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
-    .news-list::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
-    .news-fade {
-      position: relative;
-    }
-    .news-fade::after {
-      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
-      height: 48px; pointer-events: none; border-radius: 0 0 var(--radius) var(--radius);
-      background: linear-gradient(to bottom, transparent, var(--bg));
-    }
-    .news-item {
-      display: flex; align-items: baseline; gap: 20px;
-      padding: 10px 14px; border-radius: var(--radius-sm); transition: background 0.2s;
-    }
-    .news-item:hover { background: rgba(0,0,0,0.015); }
-    [data-theme="dark"] .news-item:hover { background: rgba(255,255,255,0.02); }
+    .news-list { display: flex; flex-direction: column; gap: 14px; }
+    .news-item { display: flex; align-items: baseline; gap: 22px; }
+    /* Items past the first few are hidden until "Show all news" is clicked */
+    .news-item.news-more { display: none; }
+    .news-list.expanded .news-item.news-more { display: flex; }
     .news-date {
-      font-family: var(--font-mono); font-size: 12.5px; color: var(--text-muted);
+      font-family: var(--font-mono); font-size: 13px; color: var(--text-muted);
       white-space: nowrap; min-width: 64px;
     }
-    .news-text { color: var(--text-secondary); font-size: 14.5px; line-height: 1.65; }
+    .news-text { color: var(--text-secondary); font-size: 15px; line-height: 1.65; }
     .news-text a {
       text-decoration: underline; text-decoration-color: rgba(74,158,202,0.25);
       text-underline-offset: 2px; text-decoration-thickness: 1px;
       color: var(--accent);
     }
     .news-text a:hover { color: var(--accent); text-decoration-color: var(--accent); }
+    .news-toggle {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-top: 22px; padding: 7px 16px;
+      border: 1px solid var(--border); border-radius: 100px;
+      background: none; cursor: pointer;
+      font-family: var(--font-sans); font-size: 13.5px; font-weight: 500;
+      color: var(--text-secondary); transition: all 0.25s;
+    }
+    .news-toggle:hover { color: var(--accent); border-color: var(--accent); }
+    .news-toggle svg { width: 14px; height: 14px; transition: transform 0.25s ease; }
+    .news-toggle[aria-expanded="true"] svg { transform: rotate(180deg); }
+    .news-toggle[hidden] { display: none; }
 
     /* ===== Publication Cards ===== */
     .pub-list { display: flex; flex-direction: column; gap: 14px; }
@@ -405,8 +401,9 @@
       .exp-item { grid-template-columns: 1fr; gap: 6px; padding: 16px; }
       .exp-when small { display: inline; }
       .exp-when small::before { content: ' · '; }
-      .news-item { flex-direction: column; gap: 2px; padding: 8px 10px; }
+      .news-item { flex-direction: column; gap: 2px; }
       .news-date { min-width: unset; }
+      .hero-text .bio { text-align: left; }
       .nav-links { gap: 14px; }
       .nav-links a { font-size: 13px; }
       #kirby-wrap { bottom: 16px; right: 16px; }
@@ -447,15 +444,26 @@
           <!-- To show your Chinese name, uncomment and fill in the span below. -->
           <h1 class="name-heading">Zihao Zhang <!-- <span class="cn-name">中文名</span> --></h1>
           <p class="tagline">// PhD Student · Emory University</p>
-          <p class="bio">
-            I am a PhD student in Computer Science at Emory University, co-advised by Prof. <a href="https://www.cs.emory.edu/~lxiong/">Li Xiong</a> and Prof. <a href="https://www.cs.emory.edu/~fliu40/">Fei Liu</a>.
-            Before Emory, I received my M.S. in Computer Science from UMass Amherst, advised by Prof. <a href="https://cics.umass.edu/about/directory/hong-yu">Hong Yu</a>,
-            and my B.S. in Computer Science (Honors Program) from Penn State, with minors in Mathematics, Statistics, and Cybersecurity.
-            In summer 2026, I was a GenAI Research Intern at Zoom, where I built Zoom's next-generation agentic personalized meeting summarization and studied harness design for coding agents.
-            <br><br>
-            My research centers on LLM agents: how they plan under cost constraints, how harness design shapes the behavior of coding agents, and how interactive AI systems can elicit what people actually need.
-            Earlier, I worked on clinical NLP for patient education and public-health surveillance.
-          </p>
+          <div class="bio">
+            <p>
+              I am a third-year PhD student in Computer Science at Emory University, co-advised by Prof. <a href="https://www.cs.emory.edu/~lxiong/">Li Xiong</a> and Prof. <a href="https://www.cs.emory.edu/~fliu40/">Fei Liu</a>.
+              In summer 2026, I was a GenAI Research Intern at Zoom, where I built Zoom's next-generation agentic personalized meeting summarization and studied harness design for coding agents.
+              Before Emory, I received my M.S. in Computer Science from UMass Amherst, advised by Prof. <a href="https://cics.umass.edu/about/directory/hong-yu">Hong Yu</a>,
+              and my B.S. in Computer Science (Honors Program) from Penn State, with minors in Mathematics, Statistics, and Cybersecurity.
+            </p>
+            <p>
+              <strong>Research Interests:</strong> My primary research interests include large language models, LLM agents, and natural language processing. Specifically, my current research focuses on:
+            </p>
+            <ul class="interests">
+              <li><strong>LLM Agents and Planning:</strong> how agents plan under cost constraints, tree-search planning, and evaluating the planning capabilities of LLMs.</li>
+              <li><strong>Coding Agents:</strong> harness design, context management, and failure analysis for long-horizon software-engineering agents.</li>
+              <li><strong>Interactive and Personalized AI Systems:</strong> AI-driven requirement elicitation and personalized summarization that surface what people actually need.</li>
+              <li><strong>LLM for Healthcare:</strong> clinical-skill benchmarks, patient education, and public-health surveillance with clinical NLP.</li>
+            </ul>
+            <p>
+              I am happy to collaborate and/or answer questions about my research. If you are interested in research collaboration or have any inquiries about my experience, please send me an <a href="mailto:zihao.zhang@emory.edu">email</a>.
+            </p>
+          </div>
           <div class="social-links">
             <a class="social-link" href="https://scholar.google.com/citations?user=2Yd2OEMAAAAJ&amp;hl=en" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg>
@@ -491,8 +499,7 @@
 
     <section id="news" class="section">
       <h2 class="section-title"><span class="hash">//</span> News</h2>
-      <div class="news-fade">
-      <div class="news-list">
+      <div id="news-list" class="news-list">
         <div class="news-item"><span class="news-date">2026.09</span><span class="news-text">New preprint: <a href="https://arxiv.org/abs/2609.20804">An Empirical Study of Harness Design for Coding Agents</a>. We isolate planning, action space, and context management across 176 matched settings on SWE-Bench Verified and Terminal-Bench.</span></div>
         <div class="news-item"><span class="news-date">2026.05</span><span class="news-text">Started as a GenAI Research Intern at Zoom in Bellevue, WA, working on agentic personalized meeting summarization and coding-agent harnesses.</span></div>
         <div class="news-item"><span class="news-date">2025.07</span><span class="news-text">Presented <a href="https://arxiv.org/abs/2502.11221">PlanGenLLMs</a> as an oral at ACL 2025 in Vienna. The paper received the Student Area Chair Highlights Award (top 1% of 8,000+ submissions).</span></div>
@@ -503,7 +510,10 @@
         <div class="news-item"><span class="news-date">2024.05</span><span class="news-text"><a href="https://arxiv.org/abs/2402.13452">LocalTweets to LocalHealth</a> was presented at LREC-COLING 2024.</span></div>
         <div class="news-item"><span class="news-date">2023.12</span><span class="news-text">Presented <a href="https://arxiv.org/abs/2310.19212">EHRTutor</a> at the NeurIPS 2023 Workshop on Generative AI for Education (GAIED). Also completed my M.S. at UMass Amherst.</span></div>
       </div>
-      </div>
+      <button id="news-toggle" class="news-toggle" type="button" aria-expanded="false" aria-controls="news-list">
+        <span>Show all news</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
     </section>
 
     <div class="divider"><hr></div>
@@ -670,6 +680,22 @@
     }
     render(pubs, 'pub-list');
     render(awards, 'awards-list');
+
+    /* ===== News: show the first few, expand on demand ===== */
+    (function() {
+      const LIMIT = 5;
+      const list = document.getElementById('news-list');
+      const btn = document.getElementById('news-toggle');
+      const items = Array.from(list.querySelectorAll('.news-item'));
+      if (items.length <= LIMIT) { btn.hidden = true; return; }
+      items.slice(LIMIT).forEach(i => i.classList.add('news-more'));
+      const label = btn.querySelector('span');
+      btn.addEventListener('click', () => {
+        const open = list.classList.toggle('expanded');
+        btn.setAttribute('aria-expanded', String(open));
+        label.textContent = open ? 'Show less' : 'Show all news';
+      });
+    })();
 
     /* ===== Scroll anim ===== */
     const obs = new IntersectionObserver(es => {
