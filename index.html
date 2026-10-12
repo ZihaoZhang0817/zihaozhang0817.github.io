@@ -477,8 +477,8 @@
        Fields: key = unique id, sel = show under "Selected", t = title, a = author list (HTML per author),
                v = venue chip, hl = highlight chips (optional),
                arxiv = arXiv id (title link + badge), pdf = paper URL if not on arXiv (optional),
-               code = GitHub "owner/repo" (Code link + star badge), hf = Hugging Face path such as "datasets/owner/name" (badge),
-               links = extra text links (optional), abs = abstract (optional), bib = BibTeX (optional) */
+               code = GitHub "owner/repo" (star badge), hf = Hugging Face path such as "datasets/owner/name" (badge),
+               links / abs / bib = kept for reference; the text-link row is currently not rendered */
     const pubs = [
       { key: 'harness', sel: true,
         t: 'An Empirical Study of Harness Design for Coding Agents',
@@ -595,7 +595,6 @@
 
     (function () {
       const list = document.getElementById('pub-list');
-      const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
       // shields.io badges in each service's brand colours
       const shieldText = s => encodeURIComponent(s.replace(/-/g, '--').replace(/_/g, '__'));
@@ -614,11 +613,6 @@
           const chips = [`<span class="venue">${p.v}</span>`]
             .concat((p.hl || []).map(h => `<span class="venue venue-hl">${h}</span>`))
             .join('');
-          const links = [];
-          if (p.abs) links.push(`<a href="#" data-toggle="${p.key}-abs">Abstract</a>`);
-          if (p.bib) links.push(`<a href="#" data-toggle="${p.key}-bib">Bib</a>`);
-          if (p.code) links.push(`<a href="https://github.com/${p.code}" target="_blank" rel="noopener">Code</a>`);
-          (p.links || []).forEach(l => links.push(`<a href="${l.u}" target="_blank" rel="noopener">${l.t}</a>`));
           const badges = [];
           if (p.arxiv) badges.push(badge(paper, `arXiv ${p.arxiv}`,
             `https://img.shields.io/badge/arXiv-${shieldText(p.arxiv)}-b31b1b?style=flat&logo=arxiv&logoColor=white`));
@@ -630,24 +624,10 @@
             `<div class="pub-title">${title}</div>` +
             `<div class="pub-authors">${authors}</div>` +
             `<div class="pub-meta">${chips}</div>` +
-            (links.length ? `<div class="pub-links">${links.join('')}</div>` : '') +
-            (badges.length ? `<div class="pub-badges">${badges.join('')}</div>` : '') +
-            (p.abs ? `<div id="${p.key}-abs" class="blockcontent" hidden><p>${p.abs}</p></div>` : '') +
-            (p.bib ? `<div id="${p.key}-bib" class="blockcontent" hidden><pre>${esc(p.bib)}</pre></div>` : '');
+            (badges.length ? `<div class="pub-badges">${badges.join('')}</div>` : '');
           list.appendChild(li);
         });
       }
-
-      // Abstract / Bib toggles: open one block at a time
-      list.addEventListener('click', e => {
-        const a = e.target.closest('a[data-toggle]');
-        if (!a) return;
-        e.preventDefault();
-        const box = document.getElementById(a.dataset.toggle);
-        const wasHidden = box.hidden;
-        list.querySelectorAll('.blockcontent').forEach(b => { b.hidden = true; });
-        box.hidden = !wasHidden;
-      });
 
       // Selected / Full list tabs
       const tabs = document.querySelectorAll('.pub-tab');
