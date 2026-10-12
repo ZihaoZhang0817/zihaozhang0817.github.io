@@ -2,7 +2,26 @@
   "permissions": {
     "allow": [
       "Bash([ -x \"$CHROME\" ])",
-      "Bash('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --headless=new --disable-gpu --hide-scrollbars --window-size=1100,1700 --screenshot=/private/tmp/claude-501/-Users-zihaozhang-HomePage-ZihaoZhang-github-io/30ad6332-5769-4954-99f7-d7424625fc81/scratchpad/page.png file:///Users/zihaozhang/HomePage/ZihaoZhang.github.io/index.html)"
+      "Bash('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --headless=new --disable-gpu --hide-scrollbars --window-size=1100,1700 --screenshot=/private/tmp/claude-501/-Users-zihaozhang-HomePage-ZihaoZhang-github-io/30ad6332-5769-4954-99f7-d7424625fc81/scratchpad/page.png file:///Users/zihaozhang/HomePage/ZihaoZhang.github.io/index.html)",
+      "Bash(curl -sL --max-time 30 https://rzfan525.github.io/ -o /private/tmp/claude-501/-Users-zihaozhang-HomePage-ZihaoZhang-github-io/30ad6332-5769-4954-99f7-d7424625fc81/scratchpad/ref/index.html)",
+      "Bash('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --headless=new --disable-gpu --hide-scrollbars --virtual-time-budget=5000 --window-size=1280,2400 --screenshot=/private/tmp/claude-501/-Users-zihaozhang-HomePage-ZihaoZhang-github-io/30ad6332-5769-4954-99f7-d7424625fc81/scratchpad/ref-full.png https://rzfan525.github.io/)",
+      "Bash(curl -sL --max-time 30 https://rzfan525.github.io/RunzeFan_files/jemdoc_new.css -o /private/tmp/claude-501/-Users-zihaozhang-HomePage-ZihaoZhang-github-io/30ad6332-5769-4954-99f7-d7424625fc81/scratchpad/ref/jemdoc_new.css)",
+      "Bash(awk '/<style/{f=1} f{print} /<\\\\/style>/{f=0}' /private/tmp/claude-501/-Users-zihaozhang-HomePage-ZihaoZhang-github-io/30ad6332-5769-4954-99f7-d7424625fc81/scratchpad/ref/index.html)",
+      "Bash('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --headless=new --disable-gpu --hide-scrollbars --virtual-time-budget=5000 --window-size=1280,5200 --screenshot=/private/tmp/claude-501/-Users-zihaozhang-HomePage-ZihaoZhang-github-io/30ad6332-5769-4954-99f7-d7424625fc81/scratchpad/ref-tall.png https://rzfan525.github.io/)",
+      "Bash(curl -sL --max-time 40 'http://export.arxiv.org/api/query?id_list=2609.20804,2505.14656,2502.11221,2410.01553,2402.13452,2310.19212&max_results=10' -o /private/tmp/claude-501/-Users-zihaozhang-HomePage-ZihaoZhang-github-io/30ad6332-5769-4954-99f7-d7424625fc81/scratchpad/data/arxiv.xml)",
+      "Bash(curl -sL --max-time 30 https://aclanthology.org/2025.acl-long.958.bib -o /private/tmp/claude-501/-Users-zihaozhang-HomePage-ZihaoZhang-github-io/30ad6332-5769-4954-99f7-d7424625fc81/scratchpad/data/plangen.bib)",
+      "Bash(curl -sL --max-time 30 https://aclanthology.org/2024.lrec-main.936.bib -o /private/tmp/claude-501/-Users-zihaozhang-HomePage-ZihaoZhang-github-io/30ad6332-5769-4954-99f7-d7424625fc81/scratchpad/data/localtweets.bib)",
+      "WebFetch(domain:aclanthology.org)",
+      "Bash(python3 -I -)",
+      "Bash(curl -sL --max-time 30 https://aclanthology.org/2026.eacl-long.292.bib -o /private/tmp/claude-501/-Users-zihaozhang-HomePage-ZihaoZhang-github-io/30ad6332-5769-4954-99f7-d7424625fc81/scratchpad/data/medqa.bib)",
+      "Bash('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --headless=new --disable-gpu --hide-scrollbars --virtual-time-budget=3000 --window-size=1280,2300 --screenshot=/private/tmp/claude-501/-Users-zihaozhang-HomePage-ZihaoZhang-github-io/30ad6332-5769-4954-99f7-d7424625fc81/scratchpad/new-desktop.png file:///Users/zihaozhang/HomePage/ZihaoZhang.github.io/index.html)",
+      "Bash('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --headless=new --disable-gpu --hide-scrollbars --virtual-time-budget=3000 --window-size=390,1900 --screenshot=/private/tmp/claude-501/-Users-zihaozhang-HomePage-ZihaoZhang-github-io/30ad6332-5769-4954-99f7-d7424625fc81/scratchpad/new-mobile.png file:///Users/zihaozhang/HomePage/ZihaoZhang.github.io/index.html)",
+      "Bash('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --headless=new --disable-gpu --hide-scrollbars --virtual-time-budget=3000 --window-size=1280,1500 --screenshot=/private/tmp/claude-501/-Users-zihaozhang-HomePage-ZihaoZhang-github-io/30ad6332-5769-4954-99f7-d7424625fc81/scratchpad/new-dark.png file:///private/tmp/claude-501/-Users-zihaozhang-HomePage-ZihaoZhang-github-io/30ad6332-5769-4954-99f7-d7424625fc81/scratchpad/darkcheck/index.html)",
+      "Bash(sed 's#</body>#__TRACKED_VAR__#' /Users/zihaozhang/HomePage/ZihaoZhang.github.io/index.html)",
+      "Bash('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --headless=new --disable-gpu --virtual-time-budget=4000 --window-size=390,1200 --dump-dom file:///private/tmp/claude-501/-Users-zihaozhang-HomePage-ZihaoZhang-github-io/30ad6332-5769-4954-99f7-d7424625fc81/scratchpad/diag/index.html)",
+      "Bash(python3 -I -c \"import sys,re,html; s=sys.stdin.read\\(\\); m=re.search\\(r'<div id=\\\\\"overflow-report\\\\\">\\(.*?\\)</div>',s,re.S\\); print\\(html.unescape\\(m.group\\(1\\)\\) if m else 'no report'\\)\")",
+      "Bash(python3 -I - /private/tmp/claude-501/-Users-zihaozhang-HomePage-ZihaoZhang-github-io/30ad6332-5769-4954-99f7-d7424625fc81/scratchpad/diag/index.html)",
+      "Bash(python3 -I -c \"import sys,re,html; s=sys.stdin.read\\(\\); m=re.search\\(r'<div id=\\\\\"overflow-report\\\\\">\\(.*?\\)</div>',s,re.S\\); print\\('\\\\n'.join\\(html.unescape\\(m.group\\(1\\)\\).split\\(' || '\\)\\) if m else 'no report'\\)\")"
     ]
   }
 }
