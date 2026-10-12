@@ -245,6 +245,9 @@
     .tl-body b { color: var(--text-strong); }
     .tl-sub { color: var(--text-muted); margin-top: 1px; }
     .tl-sub + .tl-sub { margin-top: 0; }
+    .tl-list { list-style: disc; margin: 6px 0 0; padding-left: 1.2em; font-size: 16px; }
+    .tl-list li { margin-bottom: 4px; text-wrap: pretty; }
+    .tl-list li::marker { color: var(--text-muted); }
     @media (max-width: 767px) {
       .timeline > li { flex-direction: column; gap: 1px; }
       .tl-date { flex-basis: auto; }
@@ -333,7 +336,7 @@
     </div>
 
     <section class="about">
-      <h2 id="About">About</h2>
+      <h2 id="About">About Me</h2>
       <p>
         I am a PhD student in the Department of Computer Science at <a href="https://www.cs.emory.edu/" target="_blank" rel="noopener">Emory University</a>, fortunate to be advised by <a href="https://www.cs.emory.edu/~lxiong/" target="_blank" rel="noopener">Prof.&nbsp;Li&nbsp;Xiong</a>.
         Previously, I was fortunate to be advised by <a href="https://www.cs.emory.edu/~fliu40/" target="_blank" rel="noopener">Dr.&nbsp;Fei&nbsp;Liu</a>.
@@ -384,14 +387,19 @@
 
     <h2 id="Internship">Internship Experience</h2>
     <ul class="timeline">
-      <li><span class="tl-date">2026.05 – 2026.08</span><div class="tl-body"><b>Zoom</b><div class="tl-sub">GenAI Research Intern, Bellevue, WA.</div><div class="tl-sub">Owned the design and implementation of Zoom's next-generation agentic personalized meeting summarization end-to-end and deployed it to production; ablated harness components on SWE-bench and Terminal-Bench to diagnose coding-agent failures.</div></div></li>
+      <li><span class="tl-date">2026.05 – 2026.08</span><div class="tl-body"><b>Zoom</b><div class="tl-sub">GenAI Research Intern, Bellevue, WA, mentored by Xiaoyang&nbsp;Wang, Kaiqiang&nbsp;Song, and Yebowen&nbsp;Hu.</div>
+        <ul class="tl-list">
+          <li>Independently designed and built Zoom's next-generation agentic personalized meeting summarization end-to-end, under the guidance of my mentors.</li>
+          <li>Evaluate harness components on SWE-bench and Terminal-Bench, diagnosing coding-agent failures and behavior through trajectory- and command-level error analyses.</li>
+        </ul>
+      </div></li>
     </ul>
 
     <h2 id="Education">Education</h2>
     <ul class="timeline">
-      <li><span class="tl-date">2024.08 – Present</span><div class="tl-body"><b>Emory University</b><div class="tl-sub">Department of Computer Science</div><div class="tl-sub">Ph.D. in Computer Science, advised by <a href="https://www.cs.emory.edu/~lxiong/" target="_blank" rel="noopener">Prof.&nbsp;Li&nbsp;Xiong</a>; previously advised by <a href="https://www.cs.emory.edu/~fliu40/" target="_blank" rel="noopener">Dr.&nbsp;Fei&nbsp;Liu</a>.</div></div></li>
-      <li><span class="tl-date">2021.09 – 2023.12</span><div class="tl-body"><b>University of Massachusetts Amherst</b><div class="tl-sub">Manning College of Information &amp; Computer Sciences</div><div class="tl-sub">M.S. in Computer Science, advised by <a href="https://cics.umass.edu/about/directory/hong-yu" target="_blank" rel="noopener">Prof.&nbsp;Hong&nbsp;Yu</a>.</div></div></li>
-      <li><span class="tl-date">2017.08 – 2021.05</span><div class="tl-body"><b>The Pennsylvania State University</b><div class="tl-sub">B.S. in Computer Science (Honors Program)</div><div class="tl-sub">Minors in Mathematics, Statistics, and Cybersecurity</div></div></li>
+      <li><span class="tl-date">2024 – Present</span><div class="tl-body"><b>Emory University</b><div class="tl-sub">Department of Computer Science</div><div class="tl-sub">Ph.D. in Computer Science, advised by <a href="https://www.cs.emory.edu/~lxiong/" target="_blank" rel="noopener">Prof.&nbsp;Li&nbsp;Xiong</a>; previously advised by <a href="https://www.cs.emory.edu/~fliu40/" target="_blank" rel="noopener">Dr.&nbsp;Fei&nbsp;Liu</a>.</div></div></li>
+      <li><span class="tl-date">2021 – 2023</span><div class="tl-body"><b>University of Massachusetts Amherst</b><div class="tl-sub">Manning College of Information &amp; Computer Sciences</div><div class="tl-sub">M.S. in Computer Science, advised by <a href="https://cics.umass.edu/about/directory/hong-yu" target="_blank" rel="noopener">Prof.&nbsp;Hong&nbsp;Yu</a>.</div></div></li>
+      <li><span class="tl-date">2017 – 2021</span><div class="tl-body"><b>The Pennsylvania State University</b><div class="tl-sub">B.S. in Computer Science (Honors Program)</div><div class="tl-sub">Minors in Mathematics, Statistics, and Cybersecurity</div></div></li>
     </ul>
 
     <h2 id="Honors">Honors &amp; Awards</h2>
