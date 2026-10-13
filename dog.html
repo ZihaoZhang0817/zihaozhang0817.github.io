@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Dog · Zihao Zhang</title>
+  <meta name="description" content="Photos of Zihao Zhang's Border Collie.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23224b8d'/%3E%3Ctext x='32' y='44' font-family='Inter,Helvetica,Arial,sans-serif' font-size='36' font-weight='600' fill='white' text-anchor='middle'%3EZ%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Shared look with index.html: palette, navbar, headings, footer (kept in sync by hand) */
+    :root {
+      --bg: #ffffff;
+      --text: #333333;
+      --text-strong: #111111;
+      --text-muted: #666666;
+      --link: #224b8d;
+      --link-hover: #15325f;
+      --accent-bg: #eef2f9;
+      --nav-bg: #e6eaf4;
+      --nav-border: #dfe3ef;
+      --nav-text: #444444;
+      --rule: #aaaaaa;
+      --border: #e3e6ec;
+      --pill-border: #d3d9e5;
+      --underline: #b9c4da;
+      --max-w: 900px;
+      --nav-h: 50px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #14161b;
+        --text: #d5d9e0;
+        --text-strong: #ffffff;
+        --text-muted: #98a0ad;
+        --link: #8db1ea;
+        --link-hover: #b5cdf4;
+        --accent-bg: #222a3b;
+        --nav-bg: #1b1f29;
+        --nav-border: #2a3040;
+        --nav-text: #c9ced9;
+        --rule: #3b414d;
+        --border: #2b3140;
+        --pill-border: #3b4354;
+        --underline: #475170;
+      }
+      .photo-grid img { filter: brightness(.94); }
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      padding-top: 80px;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 17px;
+      line-height: 1.6;
+    }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { color: var(--link-hover); }
+    p { margin: 0 0 10px; text-wrap: pretty; }
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 16px; }
+
+    h1 {
+      font-size: 30px; font-weight: 300; line-height: 1.1;
+      color: var(--text-strong);
+      margin: 10px 0 14px; padding: 8px 0 6px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .lead { color: var(--text-muted); margin-bottom: 18px; }
+
+    /* ---- navbar ---- */
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: var(--nav-bg); border-bottom: 1px solid var(--nav-border);
+      color: var(--nav-text);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      min-height: var(--nav-h); gap: 12px;
+    }
+    .brand { font-size: 18px; color: var(--nav-text); padding: 12px 0; }
+    .brand:hover { color: var(--text-strong); }
+    .nav-links { display: flex; list-style: none; margin: 0; padding: 0; }
+    .nav-links a { display: block; padding: 15px 9px; font-size: 14px; color: var(--nav-text); }
+    .nav-links a:hover, .nav-links a:focus, .nav-links a.active {
+      color: var(--text-strong);
+      text-decoration: underline; text-decoration-color: var(--link);
+      text-decoration-thickness: 2px; text-underline-offset: 5px;
+    }
+    .nav-toggle {
+      display: none; background: none; border: 1px solid var(--pill-border);
+      border-radius: 4px; padding: 6px 8px; cursor: pointer; color: var(--nav-text);
+    }
+    .nav-toggle svg { width: 18px; height: 18px; display: block; }
+    @media (max-width: 991px) {
+      .nav-inner { flex-wrap: wrap; }
+      .nav-toggle { display: block; }
+      .nav-links { display: none; flex-direction: column; width: 100%; padding: 4px 0 8px; }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 10px 4px; }
+    }
+
+    /* ---- photo grid ---- */
+    .photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .photo-grid a { display: block; border-radius: 10px; overflow: hidden; background: var(--accent-bg); }
+    .photo-grid img {
+      display: block; width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover;
+      transition: transform .25s ease;
+    }
+    .photo-grid a:hover img { transform: scale(1.03); }
+    @media (max-width: 767px) {
+      h1 { font-size: 26px; }
+      .photo-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    }
+
+    /* ---- footer ---- */
+    .site-footer {
+      margin-top: 36px; padding: 16px 0 24px;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted); font-size: 14px; text-align: center;
+    }
+    .site-footer a { color: var(--text-muted); text-decoration: underline; text-decoration-color: var(--underline); text-underline-offset: 3px; }
+    .site-footer a:hover { color: var(--link); }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .photo-grid img { transition: none; }
+      .photo-grid a:hover img { transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar" aria-label="Main">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html">Zihao Zhang</a>
+      <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav-menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <ul id="nav-menu" class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#Publications">Publications</a></li>
+        <li><a href="index.html#Internship">Internship</a></li>
+        <li><a href="index.html#Education">Education</a></li>
+        <li><a href="index.html#Honors">Honors</a></li>
+        <li><a href="index.html#Service">Service</a></li>
+        <li><a href="dog.html" class="active" aria-current="page">Dog</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container">
+    <h1>Our Dog</h1>
+    <p class="lead">Meet our Border Collie. Click a photo to view it full size.</p>
+
+    <!-- To add more photos: drop a JPEG into figures/dog/ and add another <a><img></a> block below. -->
+    <div class="photo-grid">
+      <a href="figures/dog/dog-1.jpg" target="_blank" rel="noopener"><img src="figures/dog/dog-1.jpg" alt="Our Border Collie at the park, tongue out" width="800" height="1067"></a>
+      <a href="figures/dog/dog-2.jpg" target="_blank" rel="noopener"><img src="figures/dog/dog-2.jpg" alt="Side profile of our Border Collie on a walk" width="800" height="1067"></a>
+      <a href="figures/dog/dog-3.jpg" target="_blank" rel="noopener"><img src="figures/dog/dog-3.jpg" alt="Our Border Collie lying on a brick sidewalk" width="800" height="1067" loading="lazy"></a>
+      <a href="figures/dog/dog-4.jpg" target="_blank" rel="noopener"><img src="figures/dog/dog-4.jpg" alt="Our Border Collie playing with a bottle" width="800" height="1067" loading="lazy"></a>
+    </div>
+
+    <footer class="site-footer">© 2026 Zihao Zhang · <a href="index.html">Back to home</a></footer>
+  </main>
+
+  <script>
+    /* ===== Navbar (mobile menu) ===== */
+    (function () {
+      const btn = document.querySelector('.nav-toggle');
+      const menu = document.getElementById('nav-menu');
+      btn.addEventListener('click', () => {
+        const open = menu.classList.toggle('open');
+        btn.setAttribute('aria-expanded', String(open));
+      });
+    })();
+  </script>
+</body>
+</html>
