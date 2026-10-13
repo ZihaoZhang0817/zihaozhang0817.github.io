@@ -25,7 +25,8 @@
       "Bash('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --headless=new --disable-gpu --virtual-time-budget=3000 --dump-dom file:///Users/zihaozhang/HomePage/ZihaoZhang.github.io/index.html)",
       "Bash(python3 -I - /private/tmp/claude-501/-Users-zihaozhang-HomePage-ZihaoZhang-github-io/30ad6332-5769-4954-99f7-d7424625fc81/scratchpad/new-dom2.html)",
       "Bash(grep -o 'id=\"areaslab-bib\"[^>]*>\\\\s*<pre>[^<]\\\\{0,80\\\\}' /private/tmp/claude-501/-Users-zihaozhang-HomePage-ZihaoZhang-github-io/30ad6332-5769-4954-99f7-d7424625fc81/scratchpad/new-dom2.html)",
-      "Bash('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --headless=new --disable-gpu --hide-scrollbars --virtual-time-budget=8000 --window-size=1100,2000 --screenshot=/private/tmp/claude-501/-Users-zihaozhang-HomePage-ZihaoZhang-github-io/30ad6332-5769-4954-99f7-d7424625fc81/scratchpad/badges2.png file:///Users/zihaozhang/HomePage/ZihaoZhang.github.io/index.html)"
+      "Bash('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --headless=new --disable-gpu --hide-scrollbars --virtual-time-budget=8000 --window-size=1100,2000 --screenshot=/private/tmp/claude-501/-Users-zihaozhang-HomePage-ZihaoZhang-github-io/30ad6332-5769-4954-99f7-d7424625fc81/scratchpad/badges2.png file:///Users/zihaozhang/HomePage/ZihaoZhang.github.io/index.html)",
+      "Bash(python3 -I - /private/tmp/claude-501/-Users-zihaozhang-HomePage-ZihaoZhang-github-io/30ad6332-5769-4954-99f7-d7424625fc81/scratchpad/dom7.html)"
     ]
   }
 }
