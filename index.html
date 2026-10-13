@@ -226,6 +226,7 @@
       color: var(--link); background: var(--accent-bg); border-radius: 4px; padding: 1px 8px;
     }
     .venue-hl { color: var(--hl-text); background: var(--hl-bg); }
+    a.venue-hl:hover { color: var(--hl-text); text-decoration: underline; text-underline-offset: 2px; }
     .pub-links { font-size: 15px; margin-top: 3px; }
     .pub-links a { white-space: nowrap; }
     .pub-links a:not(:last-child)::after { content: "\00b7"; color: var(--dot); margin: 0 7px; }
@@ -353,9 +354,9 @@
       </p>
       <p class="interests-lead"><b>Research Interests:</b> My primary research interests include large language models, LLM agents. Specifically, my current research focuses on:</p>
       <ul class="interests">
-        <li><b>LLM Agents and Planning</b>: how agents plan under cost constraints, <span class="nowrap">tree-search</span> planning, and evaluating the planning capabilities of LLMs.</li>
-        <li><b>Coding Agents</b>: harness design, context management, and failure analysis for <span class="nowrap">long-horizon</span> <span class="nowrap">software-engineering</span> agents.</li>
         <li><b>LLM Safety &amp; Privacy</b>: privacy risks and safeguards for LLMs and agentic systems, and building trustworthy agents that act safely on users' behalf.</li>
+        <li><b>LLM Agents and Planning</b>: how agents plan under cost constraints, <span class="nowrap">tree-search</span> planning, and evaluating the planning capabilities of LLMs.</li>
+        <li><b>Coding Agents</b>: harness design, context management, and training for <span class="nowrap">long-horizon</span> <span class="nowrap">software-engineering</span> agents.</li>
       </ul>
       <p>I am happy to collaborate and/or answer questions about my research. If you are interested in research collaboration or have any inquiries about my experience, please send me an <a class="js-email" href="#">email</a>.</p>
     </section>
@@ -479,7 +480,8 @@
       { key: 'harness', sel: true,
         t: 'An Empirical Study of Harness Design for Coding Agents',
         a: ['Run-Ze Fan*', '<b>Zihao Zhang*</b>', 'Simin Ma', 'Yebowen Hu', 'Shouju Wang', 'Kaiqiang Song', 'Fei Liu', 'Hamed Zamani', 'Xiaoyang Wang'],
-        v: 'arXiv 2026',
+        v: 'Technical Report 2026',
+        hl: [{ t: '🤗 Top 4 on Hugging Face Daily Papers', u: 'https://huggingface.co/papers/date/2026-09-18' }],
         arxiv: '2609.20804',
         abs: `Coding harnesses shape how autonomous coding agents translate model capabilities into long-horizon software-engineering performance, yet existing work typically evaluates harnesses as monolithic systems, leaving the effectiveness of individual components unclear. To enable component-level comparisons, we study this question with a lightweight coding harness whose execution loop is fixed while three components are varied: planning, action space, and context management. Across four models evaluated on SWE-Bench Verified and Terminal-Bench 2.1, we evaluate 176 matched settings spanning five context-management strategies, four context-window budgets, and targeted ablations of planning and action space. We find that: (1) Context management becomes increasingly valuable as the context-window budget tightens, with most of its benefit coming from preventing context-overflow failures. (2) Staging rule-based elision before LLM-based summarization provides the strongest overall efficiency among the context-management strategies, whereas making elided content recoverable adds machinery that models rarely use and yields no accuracy gain. (3) Planning shifts from an accuracy scaffold for weaker models to a cost saver for stronger models, with little change in accuracy. (4) Predefined tools improve performance for models with weaker bash proficiency, whereas bash-capable models can operate effectively with a bash-only interface and achieve substantially lower cost, especially on command-line-centric tasks. Trajectory-level analysis explains these effects: context management extends execution trajectories without substantially altering agent behavior, planning changes where trajectories stop, and the action space changes the granularity at which code is written. These findings inform model- and budget-aware harness design and provide a modular framework for evaluating future harness components.`,
         bib: `@article{fan2026harness,
@@ -524,24 +526,13 @@
   doi = "10.18653/v1/2025.acl-long.958",
   pages = "19497--19521"
 }` },
-      { key: 'costaware', sel: false,
-        t: 'Cost-Awareness in Tree-Search LLM Planning: A Systematic Study',
-        a: ['<b>Zihao Zhang</b>', 'Hui Wei', 'Kenan Jiang', 'Shijia Pan', 'Kai Shu', 'Fei Liu'],
-        v: 'arXiv 2025',
-        arxiv: '2505.14656',
-        abs: `Planning under resource constraints is central to real-world decision making, yet most large language model (LLM) planners assume uniform action costs. We systematically analyze whether tree-search LLM planners are cost-aware and whether they efficiently generate budget-feasible plans. In contrast to black-box prompting, explicit search trees expose intermediate decisions, node evaluations, and failure modes, which allows for controlled ablations of planner behavior. We study depth-first search, breadth-first search, Monte Carlo Tree Search, and bidirectional search within a unified framework. Our experiments show that existing tree-based LLM planners often struggle to find cost-optimal plans, and that additional search computation does not reliably improve optimality. Among the methods evaluated, bidirectional search achieves the best overall efficiency and success rate. MCTS achieves the highest optimality on short-horizon tasks. Tree-search planners are especially valuable for studying LLM planning because their reasoning steps are explicit, in contrast to plain LLMs that internalize planning dynamics through post-training trajectories. Our findings suggest that improving LLM planning under resource constraints will likely require new search algorithms, rather than solely scaling inference-time compute.`,
-        bib: `@article{zhang2025costawareness,
-  title={Cost-Awareness in Tree-Search LLM Planning: A Systematic Study},
-  author={Zhang, Zihao and Wei, Hui and Jiang, Kenan and Pan, Shijia and Shu, Kai and Liu, Fei},
-  journal={arXiv preprint arXiv:2505.14656},
-  year={2025},
-  url={https://arxiv.org/abs/2505.14656}
-}` },
-      { key: 'medqacs', sel: false,
+      { key: 'medqacs', sel: true,
         t: 'MedQA-CS: Objective Structured Clinical Examination (OSCE)-Style Benchmark for Evaluating LLM Clinical Skills',
         a: ['Zonghai Yao', '<b>Zihao Zhang</b>', 'Chaolong Tang', 'Xingyu Bian', 'Youxia Zhao', 'Zhichao Yang', 'Junda Wang', 'Huixue Zhou', 'Won Seok Jang', 'Feiyun Ouyang', 'Hong Yu'],
         v: 'EACL 2026',
         arxiv: '2410.01553',
+        code: 'bio-nlp/MedQA-CS',
+        hf: 'datasets/bio-nlp-umass/MedQA-CS-Student',
         links: [{ t: 'ACL Anthology', u: 'https://aclanthology.org/2026.eacl-long.292/' }],
         abs: `Artificial intelligence (AI) and large language models (LLMs) in healthcare require advanced clinical skills (CS), yet current benchmarks fail to evaluate these comprehensively. We introduce MedQA-CS, an AI-SCE framework inspired by medical education's Objective Structured Clinical Examinations (OSCEs), to address this gap. MedQA-CS evaluates LLMs through two instruction-following tasks, LLM-as-medical-student and LLM-as-CS-examiner, designed to reflect real clinical scenarios. Our contributions include developing MedQA-CS, a comprehensive evaluation framework with publicly available data and expert annotations, and providing the quantitative and qualitative assessment of LLMs as reliable judges in CS evaluation. Our experiments show that MedQA-CS is a more challenging benchmark for evaluating clinical skills than traditional multiple-choice QA benchmarks (e.g., MedQA). Combined with existing benchmarks, MedQA-CS enables a more comprehensive evaluation of LLMs' clinical capabilities for both open- and closed-source LLMs.`,
         bib: `@inproceedings{yao-etal-2026-medqa,
@@ -555,6 +546,19 @@
   url = "https://aclanthology.org/2026.eacl-long.292/",
   doi = "10.18653/v1/2026.eacl-long.292",
   pages = "6183--6257"
+}` },
+      { key: 'costaware', sel: false,
+        t: 'Cost-Awareness in Tree-Search LLM Planning: A Systematic Study',
+        a: ['<b>Zihao Zhang</b>', 'Hui Wei', 'Kenan Jiang', 'Shijia Pan', 'Kai Shu', 'Fei Liu'],
+        v: 'arXiv 2025',
+        arxiv: '2505.14656',
+        abs: `Planning under resource constraints is central to real-world decision making, yet most large language model (LLM) planners assume uniform action costs. We systematically analyze whether tree-search LLM planners are cost-aware and whether they efficiently generate budget-feasible plans. In contrast to black-box prompting, explicit search trees expose intermediate decisions, node evaluations, and failure modes, which allows for controlled ablations of planner behavior. We study depth-first search, breadth-first search, Monte Carlo Tree Search, and bidirectional search within a unified framework. Our experiments show that existing tree-based LLM planners often struggle to find cost-optimal plans, and that additional search computation does not reliably improve optimality. Among the methods evaluated, bidirectional search achieves the best overall efficiency and success rate. MCTS achieves the highest optimality on short-horizon tasks. Tree-search planners are especially valuable for studying LLM planning because their reasoning steps are explicit, in contrast to plain LLMs that internalize planning dynamics through post-training trajectories. Our findings suggest that improving LLM planning under resource constraints will likely require new search algorithms, rather than solely scaling inference-time compute.`,
+        bib: `@article{zhang2025costawareness,
+  title={Cost-Awareness in Tree-Search LLM Planning: A Systematic Study},
+  author={Zhang, Zihao and Wei, Hui and Jiang, Kenan and Pan, Shijia and Shu, Kai and Liu, Fei},
+  journal={arXiv preprint arXiv:2505.14656},
+  year={2025},
+  url={https://arxiv.org/abs/2505.14656}
 }` },
       { key: 'localtweets', sel: false,
         t: 'LocalTweets to LocalHealth: A Mental Health Surveillance Framework Based on Twitter Data',
@@ -607,7 +611,9 @@
             : p.t;
           const authors = p.a.map(x => `<span class="nowrap">${x}</span>`).join(', ');
           const chips = [`<span class="venue">${p.v}</span>`]
-            .concat((p.hl || []).map(h => `<span class="venue venue-hl">${h}</span>`))
+            .concat((p.hl || []).map(h => typeof h === 'string'
+              ? `<span class="venue venue-hl">${h}</span>`
+              : `<a class="venue venue-hl" href="${h.u}" target="_blank" rel="noopener">${h.t}</a>`))
             .join('');
           const badges = [];
           if (p.arxiv) badges.push(badge(paper, `arXiv ${p.arxiv}`,
