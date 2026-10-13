@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Our Dog · Zihao Zhang</title>
+  <title>Dogtoral Candidate · Zihao Zhang</title>
   <meta name="description" content="Photos of Zihao Zhang's Border Collie.">
   <meta name="robots" content="noindex">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23224b8d'/%3E%3Ctext x='32' y='44' font-family='Inter,Helvetica,Arial,sans-serif' font-size='36' font-weight='600' fill='white' text-anchor='middle'%3EZ%3C/text%3E%3C/svg%3E">
@@ -66,13 +66,6 @@
     p { margin: 0 0 10px; text-wrap: pretty; }
     .container { max-width: var(--max-w); margin: 0 auto; padding: 0 16px; }
 
-    h1 {
-      font-size: 30px; font-weight: 300; line-height: 1.1;
-      color: var(--text-strong);
-      margin: 10px 0 14px; padding: 8px 0 6px;
-      border-bottom: 1px solid var(--rule);
-    }
-    .lead { color: var(--text-muted); margin-bottom: 18px; }
 
     /* ---- navbar ---- */
     .navbar {
@@ -84,10 +77,10 @@
       display: flex; align-items: center; justify-content: space-between;
       min-height: var(--nav-h); gap: 12px;
     }
-    .brand { font-size: 18px; color: var(--nav-text); padding: 12px 0; }
+    .brand { font-size: 18px; color: var(--nav-text); padding: 12px 0; white-space: nowrap; flex-shrink: 0; }
     .brand:hover { color: var(--text-strong); }
     .nav-links { display: flex; list-style: none; margin: 0; padding: 0; }
-    .nav-links a { display: block; padding: 15px 9px; font-size: 14px; color: var(--nav-text); }
+    .nav-links a { display: block; padding: 15px 8px; font-size: 14px; color: var(--nav-text); white-space: nowrap; }
     .nav-links a:hover, .nav-links a:focus, .nav-links a.active {
       color: var(--text-strong);
       text-decoration: underline; text-decoration-color: var(--link);
@@ -115,7 +108,6 @@
     }
     .photo-grid a:hover img { transform: scale(1.03); }
     @media (max-width: 767px) {
-      h1 { font-size: 26px; }
       .photo-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
     }
 
@@ -150,15 +142,12 @@
         <li><a href="index.html#Education">Education</a></li>
         <li><a href="index.html#Honors">Honors</a></li>
         <li><a href="index.html#Service">Service</a></li>
-        <li><a href="dog.html" class="active" aria-current="page">Dog</a></li>
+        <li><a href="dog.html" class="active" aria-current="page">Dogtoral Candidate</a></li>
       </ul>
     </div>
   </nav>
 
   <main class="container">
-    <h1>Our Dog</h1>
-    <p class="lead">Meet our Border Collie. Click a photo to view it full size.</p>
-
     <!-- To add more photos: drop a JPEG into figures/dog/ and add another <a><img></a> block below. -->
     <div class="photo-grid">
       <a href="figures/dog/dog-1.jpg" target="_blank" rel="noopener"><img src="figures/dog/dog-1.jpg" alt="Our Border Collie at the park, tongue out" width="800" height="1067"></a>

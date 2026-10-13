@@ -32,7 +32,9 @@
       "Bash(sips -g pixelWidth -g pixelHeight -g format zihao_Ghibli.png)",
       "Bash(sips -s format jpeg -s formatOptions 92 --cropOffset 0 60 -c 1024 819 zihao_Ghibli.png --out zihao.jpg)",
       "Bash(sips -g pixelWidth -g pixelHeight zihao.jpg)",
-      "Bash('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --headless=new --disable-gpu --hide-scrollbars --virtual-time-budget=4000 --window-size=1100,1000 --screenshot=/private/tmp/claude-501/-Users-zihaozhang-HomePage-ZihaoZhang-github-io/30ad6332-5769-4954-99f7-d7424625fc81/scratchpad/dog-page.png file:///Users/zihaozhang/HomePage/ZihaoZhang.github.io/dog.html)"
+      "Bash('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --headless=new --disable-gpu --hide-scrollbars --virtual-time-budget=4000 --window-size=1100,1000 --screenshot=/private/tmp/claude-501/-Users-zihaozhang-HomePage-ZihaoZhang-github-io/30ad6332-5769-4954-99f7-d7424625fc81/scratchpad/dog-page.png file:///Users/zihaozhang/HomePage/ZihaoZhang.github.io/dog.html)",
+      "Bash('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --headless=new --disable-gpu --hide-scrollbars --virtual-time-budget=4000 --window-size=1100,900 --screenshot=/private/tmp/claude-501/-Users-zihaozhang-HomePage-ZihaoZhang-github-io/30ad6332-5769-4954-99f7-d7424625fc81/scratchpad/dog-page2.png file:///Users/zihaozhang/HomePage/ZihaoZhang.github.io/dog.html)",
+      "Bash('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --headless=new --disable-gpu --hide-scrollbars --virtual-time-budget=3000 --window-size=1280,140 --screenshot=/private/tmp/claude-501/-Users-zihaozhang-HomePage-ZihaoZhang-github-io/30ad6332-5769-4954-99f7-d7424625fc81/scratchpad/nav-1280.png file:///Users/zihaozhang/HomePage/ZihaoZhang.github.io/index.html)"
     ]
   }
 }
