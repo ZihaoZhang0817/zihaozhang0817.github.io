@@ -365,6 +365,7 @@
     <ul class="news-list collapsed" id="news-list">
       <li><span class="news-date">2026.09</span><span class="news-text">New preprint: <a href="https://arxiv.org/abs/2609.20804" target="_blank" rel="noopener">An Empirical Study of Harness Design for Coding Agents</a>. </span></li>
       <li><span class="news-date">2026.05</span><span class="news-text">Started as a GenAI Research Intern at Zoom in Bellevue, WA, working on agentic personalized meeting summarization and coding-agent harnesses.</span></li>
+      <li><span class="news-date">2026.01</span><span class="news-text">Our paper <a href="https://arxiv.org/abs/2410.01553" target="_blank" rel="noopener">MedQA-CS</a> is accepted as EACL 2026 Oral.</span></li>
       <li><span class="news-date">2025.05</span><span class="news-text">Our paper <a href="https://arxiv.org/abs/2502.11221" target="_blank" rel="noopener">PlanGenLLMs</a> received the Student Area Chair Highlights Award at ACL 2025 (top 1% of 8,000+ submissions).</span></li>      <li><span class="news-date">2025.05</span><span class="news-text">New preprint: <a href="https://arxiv.org/abs/2505.14656" target="_blank" rel="noopener">Cost-Awareness in Tree-Search LLM Planning: A Systematic Study</a>.</span></li>
       <li><span class="news-date">2024.10</span><span class="news-text">New preprint: <a href="https://arxiv.org/abs/2410.01553" target="_blank" rel="noopener">MedQA-CS</a>, an OSCE-style benchmark for evaluating the clinical skills of LLMs.</span></li>
       <li><span class="news-date">2024.08</span><span class="news-text">Started my PhD in Computer Science at Emory University.</span></li>
@@ -481,7 +482,7 @@
         t: 'An Empirical Study of Harness Design for Coding Agents',
         a: ['Run-Ze Fan*', '<b>Zihao Zhang*</b>', 'Simin Ma', 'Yebowen Hu', 'Shouju Wang', 'Kaiqiang Song', 'Fei Liu', 'Hamed Zamani', 'Xiaoyang Wang'],
         v: 'Technical Report 2026',
-        hl: [{ t: '🤗 Top 4 on Hugging Face Daily Papers', u: 'https://huggingface.co/papers/date/2026-09-18' }],
+        hl: [{ t: '🤗 Top 5 on Hugging Face Daily Papers', u: 'https://huggingface.co/papers/date/2026-09-18' }],
         arxiv: '2609.20804',
         abs: `Coding harnesses shape how autonomous coding agents translate model capabilities into long-horizon software-engineering performance, yet existing work typically evaluates harnesses as monolithic systems, leaving the effectiveness of individual components unclear. To enable component-level comparisons, we study this question with a lightweight coding harness whose execution loop is fixed while three components are varied: planning, action space, and context management. Across four models evaluated on SWE-Bench Verified and Terminal-Bench 2.1, we evaluate 176 matched settings spanning five context-management strategies, four context-window budgets, and targeted ablations of planning and action space. We find that: (1) Context management becomes increasingly valuable as the context-window budget tightens, with most of its benefit coming from preventing context-overflow failures. (2) Staging rule-based elision before LLM-based summarization provides the strongest overall efficiency among the context-management strategies, whereas making elided content recoverable adds machinery that models rarely use and yields no accuracy gain. (3) Planning shifts from an accuracy scaffold for weaker models to a cost saver for stronger models, with little change in accuracy. (4) Predefined tools improve performance for models with weaker bash proficiency, whereas bash-capable models can operate effectively with a bash-only interface and achieve substantially lower cost, especially on command-line-centric tasks. Trajectory-level analysis explains these effects: context management extends execution trajectories without substantially altering agent behavior, planning changes where trajectories stop, and the action space changes the granularity at which code is written. These findings inform model- and budget-aware harness design and provide a modular framework for evaluating future harness components.`,
         bib: `@article{fan2026harness,
@@ -529,7 +530,7 @@
       { key: 'medqacs', sel: true,
         t: 'MedQA-CS: Objective Structured Clinical Examination (OSCE)-Style Benchmark for Evaluating LLM Clinical Skills',
         a: ['Zonghai Yao', '<b>Zihao Zhang</b>', 'Chaolong Tang', 'Xingyu Bian', 'Youxia Zhao', 'Zhichao Yang', 'Junda Wang', 'Huixue Zhou', 'Won Seok Jang', 'Feiyun Ouyang', 'Hong Yu'],
-        v: 'EACL 2026',
+        v: 'EACL 2026', hl: ['Oral'],
         arxiv: '2410.01553',
         code: 'bio-nlp/MedQA-CS',
         hf: 'datasets/bio-nlp-umass/MedQA-CS-Student',
