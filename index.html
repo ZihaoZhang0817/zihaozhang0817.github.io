@@ -138,7 +138,10 @@
     /* ---- hero ---- */
     .hero { display: flex; align-items: center; gap: 36px; margin: 10px 0 14px; }
     .hero-photo { flex: 0 0 230px; }
-    .hero-photo img { display: block; width: 100%; height: auto; border-radius: 10px; }
+    .hero-photo img {
+      display: block; width: 100%; height: auto; border-radius: 10px;
+      aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 40%;
+    }
     .photo-fallback {
       display: none; width: 100%; aspect-ratio: 4 / 5;
       align-items: center; justify-content: center;
@@ -313,7 +316,7 @@
     <div class="hero">
       <div class="hero-photo">
         <!-- Put your photo at figures/zihao.jpg (a 4:5 portrait crop works best). -->
-        <img src="figures/zihao.jpg" alt="Zihao Zhang" width="640" height="800" onerror="this.parentElement.classList.add('no-photo')">
+        <img src="figures/zihao.jpg" alt="Zihao Zhang" width="1000" height="1250" onerror="this.parentElement.classList.add('no-photo')">
         <div class="photo-fallback" aria-hidden="true">ZZ</div>
       </div>
       <div class="hero-text">
