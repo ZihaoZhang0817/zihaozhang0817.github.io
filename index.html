@@ -478,7 +478,7 @@
        Fields: key = unique id, sel = show under "Selected", t = title, a = author list (HTML per author),
                v = venue chip, hl = highlight chips (optional),
                arxiv = arXiv id (title link + badge), pdf = paper URL if not on arXiv (optional),
-               code = GitHub "owner/repo" (star badge), hf = Hugging Face path such as "datasets/owner/name" (badge),
+               code = GitHub "owner/repo" (badge), hf = Hugging Face path such as "datasets/owner/name" (badge),
                links / abs / bib = kept for reference; the text-link row is currently not rendered */
     const pubs = [
       { key: 'harness', sel: true,
@@ -622,8 +622,8 @@
           const badges = [];
           if (p.arxiv) badges.push(badge(paper, `arXiv ${p.arxiv}`,
             `https://img.shields.io/badge/arXiv-${shieldText(p.arxiv)}-b31b1b?style=flat&logo=arxiv&logoColor=white`));
-          if (p.code) badges.push(badge(`https://github.com/${p.code}`, `GitHub stars for ${p.code}`,
-            `https://img.shields.io/github/stars/${p.code}?style=flat&label=${encodeURIComponent(p.code.split('/')[1])}&logo=github&logoColor=white&labelColor=181717&color=e3b341`));
+          if (p.code) badges.push(badge(`https://github.com/${p.code}`, `GitHub: ${p.code}`,
+            `https://img.shields.io/badge/GitHub-${shieldText(p.code.split('/')[1])}-181717?style=flat&logo=github&logoColor=white`));
           if (p.hf) badges.push(badge(`https://huggingface.co/${p.hf}`, `Hugging Face: ${p.hf}`,
             `https://img.shields.io/badge/%F0%9F%A4%97%20${p.hf.startsWith('datasets/') ? 'Dataset' : 'Model'}-${shieldText(p.hf.split('/').pop())}-ffd21e?style=flat`));
           li.innerHTML =
